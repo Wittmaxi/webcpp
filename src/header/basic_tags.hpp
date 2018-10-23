@@ -4,6 +4,7 @@
 #include "header_tags.hpp"
 #include "body_tags.hpp"
 #include "specialized_tags.hpp"
+#include "attributes.hpp"
 #include "util.hpp"
 
 namespace WCP

@@ -95,10 +95,23 @@ class H6 : public Block, public BodyObject
     void outputClosing();
 };
 
-class Break : public Block, public BodyObject 
+class LineBreak : public Block, public BodyObject 
 {
 public:
-    Break ();
+    LineBreak ();
+    void outputOpening();
+    void outputClosing();
+};
+extern LineBreak Break;
+
+class Centered : public Block, public BodyObject 
+{
+public:
+    template<class... T>
+    Centered (T... arg) {
+        restricted_unpacker<BodyObject> (arg...);
+    }
+    Centered ();
     void outputOpening();
     void outputClosing();
 };

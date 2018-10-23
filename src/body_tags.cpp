@@ -5,7 +5,7 @@ namespace WCP
 Body::Body() {}
 void Body::outputOpening()
 {
-    std::cout << "<body>";
+    std::cout << "<body" << attributes << ">";
 }
 void Body::outputClosing()
 {
@@ -15,7 +15,7 @@ void Body::outputClosing()
 H1::H1() {}
 void H1::outputOpening()
 {
-    std::cout << "<h1>";
+    std::cout << "<h1" << attributes << ">";
 }
 void H1::outputClosing()
 {
@@ -25,7 +25,7 @@ void H1::outputClosing()
 H2::H2() {}
 void H2::outputOpening()
 {
-    std::cout << "<h2>";
+    std::cout << "<h2" << attributes << ">";
 }
 void H2::outputClosing()
 {
@@ -35,7 +35,7 @@ void H2::outputClosing()
 H3::H3() {}
 void H3::outputOpening()
 {
-    std::cout << "<h3>";
+    std::cout << "<h3" << attributes << ">";
 }
 void H3::outputClosing()
 {
@@ -45,7 +45,7 @@ void H3::outputClosing()
 H4::H4() {}
 void H4::outputOpening()
 {
-    std::cout << "<h4>";
+    std::cout << "<h4" << attributes << ">";
 }
 void H4::outputClosing()
 {
@@ -55,7 +55,7 @@ void H4::outputClosing()
 H5::H5() {}
 void H5::outputOpening()
 {
-    std::cout << "<h5>";
+    std::cout << "<h5" << attributes << ">";
 }
 void H5::outputClosing()
 {
@@ -65,17 +65,27 @@ void H5::outputClosing()
 H6::H6() {}
 void H6::outputOpening()
 {
-    std::cout << "<h6>";
+    std::cout << "<h6" << attributes << ">";
 }
 void H6::outputClosing()
 {
     std::cout << "</h6>";
 }
 
-Break::Break() {}
-void Break::outputOpening() {
+LineBreak::LineBreak() {}
+void LineBreak::outputOpening()
+{
     std::cout << "<br>";
 }
-void Break::outputClosing() {}
+void LineBreak::outputClosing() {}
+LineBreak Break{};
+
+Centered::Centered() {}
+void Centered::outputOpening() {
+    std::cout << "<center" << attributes << ">";
+}
+void Centered::outputClosing() {
+    std::cout << "</center>";
+}
 
 } // namespace WCP
