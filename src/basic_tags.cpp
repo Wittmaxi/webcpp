@@ -28,7 +28,7 @@ std::ostream &operator<<(std::ostream &os, std::vector<std::shared_ptr <WCP::Nam
 namespace WCP
 {
 void Document::outputOpening()
-{
+{   
     std::cout << "Content-type:text/html\r\n\r\n";
     std::cout << "<!DOCTYPE html>";
     std::cout << "<html" << attributes << ">";

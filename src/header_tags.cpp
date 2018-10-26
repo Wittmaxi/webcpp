@@ -38,6 +38,20 @@ void Include::outputOpening()
 }
 void Include::outputClosing() {}
 
+IncludeScript::IncludeScript(std::string _href)
+{
+    href = _href;
+}
+IncludeScript::IncludeScript() {}
+void IncludeScript::outputOpening()
+{
+    std::cout << "<script src='" + href + "'>";
+}
+void IncludeScript::outputClosing() {
+    std::cout << "</script>";
+}
+
+
 HttpEquiv::HttpEquiv() {}
 HttpEquiv::HttpEquiv(std::string _equiv, std::string _content)
 {

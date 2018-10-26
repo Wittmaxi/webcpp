@@ -1,2 +1,3 @@
 all:
-	g++ -std=c++17 ./*.cpp ../src/*.cpp -o test
+	sudo g++ ./*.cpp ../src/*.cpp -o /var/www/cgi-bin/main.cgi
+	sudo cp ./*.css /var/www/html/

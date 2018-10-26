@@ -1,0 +1,16 @@
+
+.my_navbar {
+    color: white !important;
+    background-color: #55004a !important;
+}
+
+a {
+    color: inherit;
+}
+a:hover {
+    color: inherit !important;
+    text-decoration: inherit !important;
+}
+a:visited {
+    color: inherit;
+}

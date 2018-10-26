@@ -35,6 +35,18 @@ private:
   std::string rel, href, type;
 };
 
+class IncludeScript : public Block, public HeaderObject {
+public:
+  IncludeScript(std::string _href);
+  IncludeScript();
+  void outputOpening();
+  void outputPayload();
+  void outputClosing();
+
+private:
+  std::string href;
+};
+
 class HttpEquiv : public Block, public HeaderObject {
 public:
   HttpEquiv();

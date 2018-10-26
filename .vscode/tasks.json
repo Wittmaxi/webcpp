@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "cd test_application; make; ./test; ./test | firefox \"data:text/html;base64,$(base64 -w 0 <&0)\""
+            "command": "cd test_application; make; /var/www/cgi-bin/main.cgi"
         }
     ]
 }

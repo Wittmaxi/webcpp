@@ -13,10 +13,13 @@ class HeaderObject
 class BodyObject
 {
 };
+class TableObject 
+{
+};
 class DocumentObject : public HeaderObject, public BodyObject
 {
 };
-class StyleObject : public DocumentObject
+class StyleObject : public DocumentObject, public TableObject
 {
 };
 
