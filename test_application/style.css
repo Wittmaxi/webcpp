@@ -5,7 +5,7 @@
 }
 
 a {
-    color: inherit;
+    color: inherit !important;
 }
 a:hover {
     color: inherit !important;

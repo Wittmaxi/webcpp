@@ -3,12 +3,13 @@
 
 #include <iostream>
 
-std::ostream &operator<<(std::ostream &os, WCP::Block &other)
+std::ostream &operator<<(std::ostream &os, const WCP::Block &other) //other NEEDS to be const because else you cannot pass it as rvalue to cout. 
 {
-    other.outputOpening();
-    for (auto i : other.containedBlocks)
+    WCP::Block* obj_ptr = const_cast <WCP::Block*> (&other); 
+    obj_ptr->outputOpening();
+    for (auto i : obj_ptr->containedBlocks)
         os << (*i);
-    other.outputClosing();
+    obj_ptr->outputClosing();
 }
 
 std::ostream &operator<<(std::ostream& os, WCP::NamedAttribute& a) {

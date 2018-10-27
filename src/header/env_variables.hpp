@@ -5,42 +5,42 @@
 #include <stdlib.h>
 #include <iostream>
 #include <algorithm>
-
+#include <map>
 
 namespace WCP
 {
 namespace ENV
 {
-const std::array<std::string, 24> ENV_VARIABLE_NAMES = {
-   "COMSPEC", "DOCUMENT_ROOT", "GATEWAY_INTERFACE",   
-   "HTTP_ACCEPT", "HTTP_ACCEPT_ENCODING",             
-   "HTTP_ACCEPT_LANGUAGE", "HTTP_CONNECTION",         
-   "HTTP_HOST", "HTTP_USER_AGENT", "PATH",            
-   "QUERY_STRING", "REMOTE_ADDR", "REMOTE_PORT",      
-   "REQUEST_METHOD", "REQUEST_URI", "SCRIPT_FILENAME",
-   "SCRIPT_NAME", "SERVER_ADDR", "SERVER_ADMIN",      
-   "SERVER_NAME","SERVER_PORT","SERVER_PROTOCOL",     
-   "SERVER_SIGNATURE","SERVER_SOFTWARE" };  
 
-namespace __UTIL {
-std::string removeUntil (std::string toProcess, char until) {
-    return std::string (std::find(toProcess.begin(), toProcess.end(), until), toProcess.end());
-}
-std::string getUntil (std::string toProcess, char until) {
-    return std::string (toProcess.begin(), std::find(toProcess.begin(), toProcess.end(), until));
-}
+//    "COMSPEC", "DOCUMENT_ROOT", "GATEWAY_INTERFACE",   
+//    "HTTP_ACCEPT", "HTTP_ACCEPT_ENCODING",             
+//    "HTTP_ACCEPT_LANGUAGE", "HTTP_CONNECTION",         
+//    "HTTP_HOST", "HTTP_USER_AGENT", "PATH",            
+//    "QUERY_STRING", "REMOTE_ADDR", "REMOTE_PORT",      
+//    "REQUEST_METHOD", "REQUEST_URI", "SCRIPT_FILENAME",
+//    "SCRIPT_NAME", "SERVER_ADDR", "SERVER_ADMIN",      
+//    "SERVER_NAME","SERVER_PORT","SERVER_PROTOCOL",     
+//    "SERVER_SIGNATURE","SERVER_SOFTWARE"  
+// source : https://www.tutorialspoint.com/cplusplus/cpp_web_programming.htm
+
+namespace UTIL {
+extern std::string to_print;
+extern std::map <std::string, std::string> GET_MAP;
+extern std::map <std::string, std::string> POST_MAP;
+
+std::string removeBrowserEscapes (std::string text);
+std::string removeUntil (std::string toProcess, char until);
+std::string getUntil (std::string toProcess, char until);
+std::string getPostData ();
+std::string extractAndRemoveGetKeyValueFromString (std::string temporary);
+void initializeGet();
+void initializePost();
 }
 
+void initializeENV ();
 
-std::string GET (std::string name) {
-    std::string temporary(getenv ("QUERY_STRING"));
-    temporary = __UTIL::removeUntil(temporary, '?');
-    while (true) {
-        if (__UTIL::getUntil (temporary, '=') == name) {
-            return __UTIL::getUntil (__UTIL::removeUntil(temporary, '='), '&');
-        }
-    }
-}
+std::string GET (std::string name);
+std::string POST (std::string name);
 
 }
 } // namespace WCP

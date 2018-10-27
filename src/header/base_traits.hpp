@@ -79,7 +79,8 @@ public:
 };
 } // namespace WCP
 
-std::ostream &operator<<(std::ostream &os, WCP::Block &);
+
+std::ostream &operator<<(std::ostream &os, const WCP::Block &);
 std::ostream &operator<<(std::ostream &os, std::vector<std::shared_ptr<WCP::NamedAttribute>> &);
 
 #endif

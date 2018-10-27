@@ -13,7 +13,7 @@ class Document : public Block
 {
 public:
   template <class... T>
-  Document(T... arg) { unpacker(arg...); std::cout << *this; }
+  Document(T... arg) { unpacker(arg...);}
   void outputOpening();
   void outputPayload();
   void outputClosing();

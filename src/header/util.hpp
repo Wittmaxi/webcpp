@@ -7,15 +7,15 @@ namespace WCP
 {
 class Text : public Block, public HeaderObject, public BodyObject
 {
-  public:
-    Text(std::string arg);
-    Text(const char* arg);
-    Text();
-    void outputOpening();
-    void outputClosing();
+public:
+  Text(std::string arg);
+  Text(const char *arg);
+  Text();
+  void outputOpening();
+  void outputClosing();
 
-  private:
-    std::string containedText;
+private:
+  std::string containedText;
 };
 } // namespace WCP
 

@@ -53,10 +53,54 @@ Head projectHeader {
 
 int main()
 {
-Document{
+ENV::initializeENV();
+
+Document myDocument{
 projectHeader,
 Body {
-    projectNavBar
+    projectNavBar, 
+    H1 {
+        Function {
+            [] () {
+                std::cout << Text {ENV::GET ("name")} << Break;
+                std::cout << Text {ENV::GET ("hallo")} << Break;
+                std::cout << Text {ENV::POST ("name1")} << Break;
+                std::cout << Text {ENV::POST ("name2")};
+            }
+        }
+    }, 
+    Form { ClassAttribute {"form-inline"}, FormMethod {"POST"},
+        H4 {
+            "Using the POST method: "
+        }, 
+        Input {
+            InputType{"input"}, ClassAttribute{"form-control"}, InputValue {""}, InputName{"name1"}
+        },
+        Input {
+            InputType{"input"}, ClassAttribute{"form-control"}, InputValue {""}, InputName{"name2"}
+        }, 
+        Input {
+            InputType {"submit"}
+        }
+    }, 
+    Break,
+    Form { ClassAttribute {"form-inline"}, FormMethod {"GET"},
+        H4 {
+            "Using the GET method: "
+        }, 
+        Input {
+            InputType{"input"}, ClassAttribute{"form-control"}, InputValue {""}, InputName{"hallo"}
+        },
+        Input {
+            InputType{"input"}, ClassAttribute{"form-control"}, InputValue {""}, InputName{"name"}
+        }, 
+        Input {
+            InputType {"submit"}
+        }
+    }
+
 }
 };
+
+std::cout << myDocument;
 }

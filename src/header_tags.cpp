@@ -34,7 +34,7 @@ Include::Include(std::string _href, std::string _type, std::string _rel)
 Include::Include() {}
 void Include::outputOpening()
 {
-    std::cout << "<link rel='" + rel + "'type='" + type + "'href='" + href + "'>";
+    std::cout << "<link rel='" + rel + "' type='" + type + "' href='" + href + "'>";
 }
 void Include::outputClosing() {}
 
@@ -60,7 +60,7 @@ HttpEquiv::HttpEquiv(std::string _equiv, std::string _content)
 }
 void HttpEquiv::outputOpening()
 {
-    std::cout << "<meta http-equiv='" + equiv + "'content='" + content + "'>";
+    std::cout << "<meta http-equiv='" + equiv + "' content='" + content + "'>";
 }
 void HttpEquiv::outputClosing() {}
 
@@ -83,7 +83,7 @@ Meta::Meta(std::string _name, std::string _content)
 }
 void Meta::outputOpening()
 {
-    std::cout << "<meta name='" + name + "'content='" + content + "'>";
+    std::cout << "<meta name='" + name + "' content='" + content + "'>";
 }
 void Meta::outputClosing() {}
 

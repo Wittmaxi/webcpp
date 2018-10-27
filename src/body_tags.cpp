@@ -207,7 +207,6 @@ void Input::outputOpening() {
     std::cout << "<input" << attributes << ">";
 }
 void Input::outputClosing() {
-    std::cout << "</input>";
 }
 
 
