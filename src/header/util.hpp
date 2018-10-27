@@ -8,8 +8,8 @@ namespace WCP
 class Text : public Block, public HeaderObject, public BodyObject
 {
 public:
-  Text(std::string arg);
   Text(const char *arg);
+  Text(std::string);
   Text();
   void outputOpening();
   void outputClosing();
