@@ -210,7 +210,11 @@ Prints out an unprocessed Text.
 
 ---
 ```WCP::ConvenientText```
-Prints out a Text that escapes dangerous characters, changes line breaks "\n" to the html-tag "<br>" and replace tabulators "\t" with a box that is 40 pixels wide.
+Prints out a Text that escapes dangerous characters, changes line breaks "\n" to the html-tag "< br >" and replace tabulators "\t" with a box that is 40 pixels wide.
+
+---
+```WCP::Function```
+Expects a std::function <void(void)> as argument. It doesn't print anything, but runs the given function in between the opening parent and closing parent tag. 
 
 ### Attributes
 HTML - Tags can have attributes. Any Block, that can take an infinite amount of Blocks can also take an Infinite amount of Attributes. Attributes accept a string that will be added to the HTML tag in the following way: ```<html_tag + "specified argument's string">```. WCP::Attribute just adds a string, while the other attributes add a certain attribute specifier. Class attribute, for example, changes the tag to ```<html class="specified string">```
