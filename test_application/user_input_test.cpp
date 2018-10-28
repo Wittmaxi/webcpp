@@ -23,13 +23,14 @@ Container projectContent {ClassAttribute {"content-box col-sm-9 bg-dark text-lig
         Function {
             [] () {
                 std::ifstream file ("user_comments.txt");
+                std::vector<std::string> vec;
                 std::string temp;
                 while (file.good()) {
                     std::getline (file, temp);
-                    std::cout << ConvenientText {temp} << HorizontalLine {};
+                    vec.push_back(temp);
                 }
-
-
+                for (auto i = vec.rbegin(); i != vec.rend(); i++)
+                    std::cout << ConvenientText {*i} << HorizontalLine {};
             }
         }
     }
