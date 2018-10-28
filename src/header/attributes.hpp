@@ -44,6 +44,16 @@ class StyleAttribute : public NamedAttribute
   private:
     std::string name;
 };
+class SourceAttribute : public NamedAttribute
+{
+  public:
+    SourceAttribute();
+    SourceAttribute(std::string);
+    void printAttribute();
+
+  private:
+    std::string name;
+};
 class HyperReference : public NamedAttribute
 {
   public:

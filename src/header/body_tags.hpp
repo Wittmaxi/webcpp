@@ -211,6 +211,7 @@ public:
         restricted_unpacker<BodyObject> (arg...);
     }
     HyperLink ();
+    HyperLink(const char*);
     void outputOpening();
     void outputClosing();
 private: 
@@ -225,10 +226,9 @@ public:
         restricted_unpacker<BodyObject> (arg...);
     }
     Marked ();
+    Marked (const char*);
     void outputOpening();
     void outputClosing();
-private: 
-    std::string href;
 };
 
 class Form : public Block, public BodyObject 
@@ -239,10 +239,9 @@ public:
         restricted_unpacker<BodyObject> (arg...);
     }
     Form ();
+    Form (const char*);
     void outputOpening();
     void outputClosing();
-private: 
-    std::string href;
 };
 
 class Input : public Block, public BodyObject 
@@ -250,14 +249,97 @@ class Input : public Block, public BodyObject
 public:
     template<class... T>
     Input (T... arg) {
-        restricted_unpacker<BodyObject> (arg...);
+        restricted_unpacker<StyleObject> (arg...);
     }
     Input ();
     void outputOpening();
     void outputClosing();
-private: 
-    std::string href;
 };
+
+class Paragraph : public Block, public BodyObject 
+{
+public:
+    template<class... T>
+    Paragraph (T... arg) {
+        restricted_unpacker<BodyObject> (arg...);
+    }
+    Paragraph ();
+    Paragraph (const char*);
+    void outputOpening();
+    void outputClosing();
+};
+
+class Image : public Block, public BodyObject 
+{
+public:
+    template<class... T>
+    Image (T... arg) {
+        restricted_unpacker<StyleObject> (arg...);
+    }
+    Image ();
+    void outputOpening();
+    void outputClosing();
+};
+
+class Picture : public Block, public BodyObject 
+{
+public:
+    template<class... T>
+    Picture (T... arg) {
+        restricted_unpacker<BodyObject> (arg...);
+    }
+    Picture ();
+    Picture (const char*);
+    void outputOpening();
+    void outputClosing();
+};
+
+class Source : public Block, public BodyObject 
+{
+public:
+    template<class... T>
+    Source (T... arg) {
+        restricted_unpacker<StyleObject> (arg...);
+    }
+    Source ();
+    void outputOpening();
+    void outputClosing();
+};
+
+class HorizontalLine : public Block, public BodyObject 
+{
+public:
+    HorizontalLine ();
+    void outputOpening();
+    void outputClosing();
+};
+
+class Quote : public Block, public BodyObject 
+{
+public:
+    template<class... T>
+    Quote (T... arg) {
+        restricted_unpacker<BodyObject> (arg...);
+    }
+    Quote ();
+    Quote (const char*);
+    void outputOpening();
+    void outputClosing();
+};
+
+class Label : public Block, public BodyObject 
+{
+public:
+    template<class... T>
+    Label (T... arg) {
+        restricted_unpacker<BodyObject> (arg...);
+    }
+    Label ();
+    Label (const char*);
+    void outputOpening();
+    void outputClosing();
+};
+
 } // namespace WCP
 
 #endif

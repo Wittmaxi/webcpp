@@ -1,54 +1,57 @@
 #include "../src/header/webcpp.hpp"
+#include "navbar.hpp"
+#include "header.hpp"
 #include <fstream>
 
 using namespace WCP;
 
-
-bool isLoggedIn () {
-    return true; //temporary
-}
-
-std::string getUserName () {
-    return "MAXI"; //temporary
-}
-
-void printNavbarLoginState () {
-    if (isLoggedIn ()) {
-        Form toPrint { ClassAttribute {"form-inline"},
-            Input {
-                InputType{"button"}, ClassAttribute{"form-control mr-sm-2 btn btn-success "}, InputValue {"Login"}
-            },
-            Input {
-                InputType{"button"}, ClassAttribute{"form-control mr-sm-2 btn btn-info"}, InputValue {"Register"}
+Container projectContent {ClassAttribute {"content-box col-sm-9 bg-dark"},
+Container {ClassAttribute {"border border-success rounded"},
+    H1 {ClassAttribute {"text-light"},
+        Centered {
+            "WEBCPP - Webdev in C++. Yep, it's possible!"
+        }
+    }
+},
+HorizontalLine(),
+Container {ClassAttribute {"row"},
+    Container {ClassAttribute {"card col-xl-3 col-sm-6"},
+        Image {ClassAttribute {"card-img-top"}, SourceAttribute {"../media/libcode.png"}},
+        Container {ClassAttribute {"card-body"},
+            H3 {"WEBCPP!"},
+            Paragraph {"The WEBCPP Library! The entire code, the real deal!"},
+            HyperLink {HyperReference {"https://github.com/Wittmaxi/webcpp"}, ClassAttribute {"btn btn-primary"},
+                Text {
+                    "Go Go Go!"
+                }            
             }
-        };
-        std::cout << toPrint;
-    } else {
-        Form toPrint { ClassAttribute {"form-inline"},
-            Input {
-                InputType{"button"}, ClassAttribute{"form-control mr-sm-2 "}, InputValue {"Welcome, " + getUserName ()}
-            } 
-        };
-        std::cout << toPrint;
+        }
+    },
+    Container {ClassAttribute {"card col-xl-3 col-sm-6"},
+        Image {ClassAttribute {"card-img-top"}, SourceAttribute {"../media/websitecode.png"}},
+        Container {ClassAttribute {"card-body"},
+            H3 {"This Website's Source Code!"},
+            Paragraph {"Look at the Source Code of this webpage. Completely written in C++ obviously!"},
+            HyperLink {HyperReference {"https://github.com/Wittmaxi/webcpp/tree/master/test_application"}, ClassAttribute {"btn btn-primary"},
+                Text {
+                    "Go Go Go!"
+                }            
+            }
+        }
+    },
+    Container {ClassAttribute {"card col-xl-3 col-sm-6"},
+        Image {ClassAttribute {"card-img-top"}, SourceAttribute {"../media/testpage.png"}},
+        Container {ClassAttribute {"card-body"},
+            H3 {"Testing AREA!"},
+            Paragraph {"This is where I test out things without compromising the main page!"},
+            HyperLink {HyperReference {"user_input_test.cgi"}, ClassAttribute {"btn btn-danger"},
+                Text {
+                    "Go Go Go!"
+                }            
+            }
+        }
     }
 }
-
-NavBar projectNavBar {
-    ClassAttribute {"navbar navbar-expand-lg navbar-dark my_navbar"},
-    Container {ClassAttribute {"navbar-brand"}, Text{"WEBCPP"}},
-    HyperLink {HyperReference{"https://www.github.com/wittmaxi/webcpp"}, Container {ClassAttribute {"nav-link"}, Text{"Our Repository"}}},
-    Container {ClassAttribute{"container"}},
-    Function {printNavbarLoginState}
-};
-
-Head projectHeader {
-    Title {"My Page"},
-    Charset{"utf-8"},
-    Include {"../style.css", "text/css", "stylesheet"},
-    Include {"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css", "text/css", "stylesheet"},
-    IncludeScript {"https://code.jquery.com/jquery-3.3.1.slim.min.js"},
-    IncludeScript {"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"},
-    IncludeScript {"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"}
 };
 
 int main()
@@ -59,46 +62,7 @@ Document myDocument{
 projectHeader,
 Body {
     projectNavBar, 
-    H1 {
-        Function {
-            [] () {
-                std::cout << Text {ENV::GET ("name")} << Break;
-                std::cout << Text {ENV::GET ("hallo")} << Break;
-                std::cout << Text {ENV::POST ("name1")} << Break;
-                std::cout << Text {ENV::POST ("name2")};
-            }
-        }
-    }, 
-    Form { ClassAttribute {"form-inline"}, FormMethod {"POST"},
-        H4 {
-            "Using the POST method: "
-        }, 
-        Input {
-            InputType{"input"}, ClassAttribute{"form-control"}, InputValue {""}, InputName{"name1"}
-        },
-        Input {
-            InputType{"input"}, ClassAttribute{"form-control"}, InputValue {""}, InputName{"name2"}
-        }, 
-        Input {
-            InputType {"submit"}
-        }
-    }, 
-    Break,
-    Form { ClassAttribute {"form-inline"}, FormMethod {"GET"},
-        H4 {
-            "Using the GET method: "
-        }, 
-        Input {
-            InputType{"input"}, ClassAttribute{"form-control"}, InputValue {""}, InputName{"hallo"}
-        },
-        Input {
-            InputType{"input"}, ClassAttribute{"form-control"}, InputValue {""}, InputName{"name"}
-        }, 
-        Input {
-            InputType {"submit"}
-        }
-    }
-
+    projectContent
 }
 };
 

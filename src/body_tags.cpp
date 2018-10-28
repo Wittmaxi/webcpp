@@ -179,6 +179,7 @@ void NavBar::outputClosing() {
 }
 
 HyperLink::HyperLink() {}
+HyperLink::HyperLink(const char* text) : HyperLink (Text (text)) {}
 void HyperLink::outputOpening() {
     std::cout << "<a" << attributes << ">";
 }
@@ -187,6 +188,7 @@ void HyperLink::outputClosing() {
 }
 
 Marked::Marked() {}
+Marked::Marked(const char* text) : Marked (Text (text)) {}
 void Marked::outputOpening() {
     std::cout << "<mark" << attributes << ">";
 }
@@ -195,6 +197,7 @@ void Marked::outputClosing() {
 }
 
 Form::Form() {}
+Form::Form(const char* text) : Form (Text (text)) {}
 void Form::outputOpening() {
     std::cout << "<form" << attributes << ">";
 }
@@ -209,5 +212,60 @@ void Input::outputOpening() {
 void Input::outputClosing() {
 }
 
+Paragraph::Paragraph() {}
+Paragraph::Paragraph(const char* text) : Paragraph (Text (text)) {}
+void Paragraph::outputOpening() {
+    std::cout << "<p" << attributes << ">";
+}
+void Paragraph::outputClosing() {
+    std::cout << "</p>";
+}
+
+Image::Image() {}
+void Image::outputOpening() {
+    std::cout << "<img" << attributes << ">";
+}
+void Image::outputClosing() {
+}
+
+Picture::Picture() {}
+void Picture::outputOpening() {
+    std::cout << "<picture" << attributes << ">";
+}
+void Picture::outputClosing() {
+    std::cout << "</picture>";
+}
+
+Source::Source() {}
+void Source::outputOpening() {
+    std::cout << "<source" << attributes << ">";
+}
+void Source::outputClosing() {
+}
+
+HorizontalLine::HorizontalLine() {}
+void HorizontalLine::outputOpening() {
+    std::cout << "<hr>";
+}
+void HorizontalLine::outputClosing() {
+}
+
+Quote::Quote() {}
+Quote::Quote(const char* text) : Quote (Text (text)) {}
+void Quote::outputOpening() {
+    std::cout << "<blockquote" << attributes << ">";
+}
+void Quote::outputClosing() {
+    std::cout << "</blockquote>";
+}
+
+Label::Label() {}
+Label::Label(const char* text) : Label (Text (text)) {}
+void Label::outputOpening() {
+    std::cout << "<label" << attributes << ">";
+}
+void Label::outputClosing() {
+    std::cout << "</label>";
+}
 
 } // namespace WCP

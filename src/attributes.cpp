@@ -109,4 +109,16 @@ void InputValue::printAttribute()
 {
     std::cout << "value=\"" << name << "\"";
 }
+
+SourceAttribute::SourceAttribute() {}
+SourceAttribute::SourceAttribute(std::string cn)
+{
+    name = cn;
+    name = std::regex_replace(name, std::regex("\""), "&quot;");
+    name = std::regex_replace(name, std::regex("\'"), "&#39");
+}
+void SourceAttribute::printAttribute()
+{
+    std::cout << "src=\"" << name << "\"";
+}
 } // namespace WCP

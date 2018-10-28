@@ -1,16 +1,29 @@
 
 .my_navbar {
-    color: white !important;
-    background-color: #55004a !important;
+    background-color: #55004a ;
+    color: white;
 }
 
 a {
-    color: inherit !important;
+    color: inherit ;
 }
 a:hover {
-    color: inherit !important;
-    text-decoration: inherit !important;
+    color: inherit ;
+    text-decoration: inherit ;
 }
 a:visited {
     color: inherit;
+}
+
+.content-box {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    background-color: #000000 ;
+}
+
+.headline {
+    
 }

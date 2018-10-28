@@ -23,35 +23,20 @@ std::string getUntil (std::string toProcess, char until) {
 }
 
 std::string removeBrowserEscapes (std::string text) {
-    text = std::regex_replace(text, std::regex("%20|\\+"), " ");
-    text = std::regex_replace(text, std::regex("%24"), "$");
-    text = std::regex_replace(text, std::regex("%26"), "&");
-    text = std::regex_replace(text, std::regex("%60"), "`");
-    text = std::regex_replace(text, std::regex("%3A"), ":");
-    text = std::regex_replace(text, std::regex("%3C"), "<");
-    text = std::regex_replace(text, std::regex("%3E"), ">");
-    text = std::regex_replace(text, std::regex("%28"), "(");
-    text = std::regex_replace(text, std::regex("%29"), ")");
-    text = std::regex_replace(text, std::regex("%5B"), "[");
-    text = std::regex_replace(text, std::regex("%5D"), "]");
-    text = std::regex_replace(text, std::regex("%7B"), "{");
-    text = std::regex_replace(text, std::regex("%7D"), "}");
-    text = std::regex_replace(text, std::regex("%22"), "\"");
-    text = std::regex_replace(text, std::regex("%2B"), "+");
-    text = std::regex_replace(text, std::regex("%23"), "#");
-    text = std::regex_replace(text, std::regex("%25"), "%");
-    text = std::regex_replace(text, std::regex("%40"), "@");
-    text = std::regex_replace(text, std::regex("%2F"), "/");
-    text = std::regex_replace(text, std::regex("%3B"), ";");
-    text = std::regex_replace(text, std::regex("%3D"), "=");
-    text = std::regex_replace(text, std::regex("%3F"), "?");
-    text = std::regex_replace(text, std::regex("%5C"), "\\");
-    text = std::regex_replace(text, std::regex("%5E"), "^");
-    text = std::regex_replace(text, std::regex("%7C"), "|");
-    text = std::regex_replace(text, std::regex("%7E"), "~");
-    text = std::regex_replace(text, std::regex("%27"), "´");
-    text = std::regex_replace(text, std::regex("%2C"), ",");
-    return text;
+    std::string temp_string;
+    char *textPtr = const_cast <char*> (text.c_str());
+    for (size_t i = 0; i < text.size(); i++) {
+        if (text [i] == '+') {
+            temp_string += " ";
+        } else if (text [i] == '%') {
+            char a = strtol (&(textPtr[i+1]), nullptr, 16);
+            temp_string += a;
+            i += 2;
+        } else {
+            temp_string += text [i];
+        }
+    }
+    return temp_string;
 }
 
 std::string extractAndRemoveGetKeyValueFromString (std::string temporary, std::map<std::string, std::string> &mapToUse) {
