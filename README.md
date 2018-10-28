@@ -2,7 +2,15 @@
 A simple framework to organize C++ CGI applications
 
 ## Installation 
-Unclear for now. 
+In order to Install the library, run
+
+```
+git clone https://github.com/Wittmaxi/webcpp
+cd webcpp
+make install 
+```
+
+Include <webcpp/webcpp.hpp>, compile with -lwcp
 
 ## Compatibility and Future
 This library was developed on and for \*nix systems. A port to windows should be easy to do.
@@ -96,3 +104,160 @@ Generate the ```<h1> </h1>``` to ```<h6> </h6>``` tags respectively.
 
 ---
 
+```WCP::LineBreak```
+Generates a linebreak. One object of it is created, called Break.
+
+
+---
+
+```WCP::Centered```
+Centers the content. 
+
+---
+
+```WCP::Table```
+Creates a table
+
+---
+
+```WCP::Row```
+Creates a row in a table
+
+---
+
+```WCP::Cell```
+Creates a Cell in a Table-Row
+
+---
+
+```WCP::HighlightedCell```
+Creates a highlighted Cell in a Table-Row
+
+---
+
+```WCP::Container```
+Creates a Container.
+
+---
+
+```WCP::NavBar```
+Creates a navbar.
+
+---
+
+``` WCP::HyperLink```
+Creates an Hyperlink.
+
+---
+
+
+```WCP::Marked```
+Creates a Marked section
+
+--- 
+
+```WCP::Form```
+Creates a Form
+
+---
+
+```WCP::Input```
+creates an input element inside of a form.
+
+---
+
+```WCP::Paragraph```
+Creates a paragraph
+
+--- 
+
+```WCP::Image```
+Includes an Image
+
+---
+
+```WCP::Picture```
+
+Optional Wrapper around Images
+
+---
+
+```WCP::Source```
+To be used inside of ```WCP::Picture```. States a source for a picture.
+
+---
+
+```WCP::HorizontalLine```
+Creates a Horizontal line. Can't take any arguments. 
+
+---
+
+```WCP::Quote```
+Creates a blockquote
+
+---
+
+```WCP::Label```
+Creates a Label
+
+---
+```WCP::Text``` 
+Prints out Text that escapes dangerous characters.
+
+---
+```WCP::UnformattedText```
+Prints out an unprocessed Text.
+
+---
+```WCP::ConvenientText```
+Prints out a Text that escapes dangerous characters, changes line breaks "\n" to the html-tag "<br>" and replace tabulators "\t" with a box that is 40 pixels wide.
+
+### Attributes
+HTML - Tags can have attributes. Any Block, that can take an infinite amount of Blocks can also take an Infinite amount of Attributes. Attributes accept a string that will be added to the HTML tag in the following way: ```<html_tag + "specified argument's string">```. WCP::Attribute just adds a string, while the other attributes add a certain attribute specifier. Class attribute, for example, changes the tag to ```<html class="specified string">```
+
+---
+
+```WCP::Attribute``` 
+An attribute that can be anything. 
+
+---
+```WCP::ClassAttribute```
+Assigns one or multiple Css-Classes to the Block.
+
+---
+```WCP::IdAttribute```
+Assigns one or multiple CSS-IDs to the Block.
+
+---
+```WCP::StyleAttribute```
+Directly assigns Css-Style to the block
+
+---
+```WCP::SourceAttribute```
+Assigns a content-source to a Block
+
+---
+```WCP::HyperReference```
+Assigns a href attribute to a Block.
+
+---
+```WCP::FormMethod```
+Sets the Method of data processing of a Form. Possible values "GET" or "POST"
+
+---
+```WCP::InputType```
+Sets the type of an Input Block
+
+---
+```WCP::InputValue```
+Sets the standard value of an Input Block.
+
+
+### Environment Variables
+All the Environment Variables are handled by the Namespace WCP::ENV.
+To initialize the handler, use 
+```WCP::ENV::initializeENV()```.
+Then, you can get both the arguments passed as POST and GET request with both
+
+```WCP::ENV::GET (std::string name)``` and ```WCP::ENV::POST(std::string name)``` 
+Both functions return a UTF8-String that has already escaped the browser escape signals. 
