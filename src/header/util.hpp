@@ -11,8 +11,8 @@ public:
   Text(const char *arg);
   Text(std::string);
   Text();
-  void outputOpening();
-  void outputClosing();
+  void outputOpening() const;
+  void outputClosing() const;
 
 private:
   std::string containedText;
@@ -24,8 +24,8 @@ public:
   UnformattedText(const char *arg);
   UnformattedText(std::string);
   UnformattedText();
-  void outputOpening();
-  void outputClosing();
+  void outputOpening() const;
+  void outputClosing() const;
 
 private:
   std::string containedText;
@@ -37,8 +37,8 @@ public:
   ConvenientText(const char *arg);
   ConvenientText(std::string);
   ConvenientText();
-  void outputOpening();
-  void outputClosing();
+  void outputOpening() const;
+  void outputClosing() const;
 
 private:
   std::string containedText;

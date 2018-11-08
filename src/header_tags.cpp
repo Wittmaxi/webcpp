@@ -2,11 +2,11 @@
 
 namespace WCP
 {
-void Head::outputOpening()
+void Head::outputOpening() const
 {
     std::cout << "<head> ";
 }
-void Head::outputClosing()
+void Head::outputClosing() const
 {
     std::cout << "</head>";
 }
@@ -16,11 +16,11 @@ Title::Title(WCP::Text arg)
 {
     unpacker(arg);
 }
-void Title::outputOpening()
+void Title::outputOpening() const
 {
     std::cout << "<title>";
 }
-void Title::outputClosing()
+void Title::outputClosing() const
 {
     std::cout << "</title>";
 }
@@ -32,22 +32,22 @@ Include::Include(std::string _href, std::string _type, std::string _rel)
     href = _href;
 }
 Include::Include() {}
-void Include::outputOpening()
+void Include::outputOpening() const
 {
     std::cout << "<link rel='" + rel + "' type='" + type + "' href='" + href + "'>";
 }
-void Include::outputClosing() {}
+void Include::outputClosing() const {}
 
 IncludeScript::IncludeScript(std::string _href)
 {
     href = _href;
 }
 IncludeScript::IncludeScript() {}
-void IncludeScript::outputOpening()
+void IncludeScript::outputOpening() const
 {
     std::cout << "<script src='" + href + "'>";
 }
-void IncludeScript::outputClosing() {
+void IncludeScript::outputClosing() const {
     std::cout << "</script>";
 }
 
@@ -58,22 +58,22 @@ HttpEquiv::HttpEquiv(std::string _equiv, std::string _content)
     equiv = _equiv;
     content = _content;
 }
-void HttpEquiv::outputOpening()
+void HttpEquiv::outputOpening() const
 {
     std::cout << "<meta http-equiv='" + equiv + "' content='" + content + "'>";
 }
-void HttpEquiv::outputClosing() {}
+void HttpEquiv::outputClosing() const {}
 
 Charset::Charset() {}
 Charset::Charset(std::string _charset)
 {
     charset = _charset;
 }
-void Charset::outputOpening()
+void Charset::outputOpening() const
 {
     std::cout << "<meta charset='" + charset + "'> ";
 }
-void Charset::outputClosing() {}
+void Charset::outputClosing() const {}
 
 Meta::Meta() {}
 Meta::Meta(std::string _name, std::string _content)
@@ -81,10 +81,10 @@ Meta::Meta(std::string _name, std::string _content)
     name = _name;
     content = _content;
 }
-void Meta::outputOpening()
+void Meta::outputOpening() const
 {
     std::cout << "<meta name='" + name + "' content='" + content + "'>";
 }
-void Meta::outputClosing() {}
+void Meta::outputClosing() const {}
 
 } // namespace WCP

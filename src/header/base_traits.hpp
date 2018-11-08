@@ -70,8 +70,8 @@ public:
   {
   }
 
-  virtual void outputOpening() = 0;
-  virtual void outputClosing() = 0;
+  virtual void outputOpening() const = 0;
+  virtual void outputClosing() const = 0;
   void appendBlock(Block &other);
 
   std::vector<std::shared_ptr<Block>> containedBlocks;
@@ -81,6 +81,6 @@ public:
 
 
 std::ostream &operator<<(std::ostream &os, const WCP::Block &);
-std::ostream &operator<<(std::ostream &os, std::vector<std::shared_ptr<WCP::NamedAttribute>> &);
+std::ostream &operator<<(std::ostream &os, const std::vector<std::shared_ptr<WCP::NamedAttribute>> &);
 
 #endif

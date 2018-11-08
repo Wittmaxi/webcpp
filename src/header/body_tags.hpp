@@ -15,8 +15,8 @@ class Body : public Block
     }
     Body();
     Body(const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class H1 : public Block, public BodyObject
@@ -29,8 +29,8 @@ class H1 : public Block, public BodyObject
     }
     H1();
     H1(const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class H2 : public Block, public BodyObject
@@ -43,8 +43,8 @@ class H2 : public Block, public BodyObject
     }
     H2();
     H2(const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class H3 : public Block, public BodyObject
@@ -57,8 +57,8 @@ class H3 : public Block, public BodyObject
     }
     H3();
     H3(const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class H4 : public Block, public BodyObject
@@ -71,8 +71,8 @@ class H4 : public Block, public BodyObject
     }
     H4();
     H4(const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class H5 : public Block, public BodyObject
@@ -85,8 +85,8 @@ class H5 : public Block, public BodyObject
     }
     H5();
     H5(const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class H6 : public Block, public BodyObject
@@ -99,16 +99,16 @@ class H6 : public Block, public BodyObject
     }
     H6();
     H6(const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class LineBreak : public Block, public BodyObject 
 {
 public:
     LineBreak ();
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 extern LineBreak Break;
 
@@ -121,8 +121,8 @@ public:
     }
     Centered ();
     Centered (const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class Table : public Block, public BodyObject 
@@ -134,8 +134,8 @@ public:
     }
     Table ();
     Table (const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class Row : public Block, public TableObject 
@@ -147,8 +147,8 @@ public:
     }
     Row ();
     Row (const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class Cell : public Block, public BodyObject 
@@ -160,8 +160,8 @@ public:
     }
     Cell (const char*);
     Cell ();
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class HighlightedCell : public Block, public BodyObject 
@@ -173,8 +173,8 @@ public:
     }
     HighlightedCell ();
     HighlightedCell (const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class Container : public Block, public BodyObject 
@@ -186,8 +186,8 @@ public:
     }
     Container ();
     Container (const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class NavBar : public Block, public BodyObject 
@@ -199,8 +199,8 @@ public:
     }
     NavBar ();
     NavBar (const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class HyperLink : public Block, public BodyObject 
@@ -212,8 +212,8 @@ public:
     }
     HyperLink ();
     HyperLink(const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 private: 
     std::string href;
 };
@@ -227,8 +227,8 @@ public:
     }
     Marked ();
     Marked (const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class Form : public Block, public BodyObject 
@@ -240,8 +240,8 @@ public:
     }
     Form ();
     Form (const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class Input : public Block, public BodyObject 
@@ -252,8 +252,8 @@ public:
         restricted_unpacker<StyleObject> (arg...);
     }
     Input ();
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class Paragraph : public Block, public BodyObject 
@@ -265,8 +265,8 @@ public:
     }
     Paragraph ();
     Paragraph (const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class Image : public Block, public BodyObject 
@@ -277,8 +277,8 @@ public:
         restricted_unpacker<StyleObject> (arg...);
     }
     Image ();
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class Picture : public Block, public BodyObject 
@@ -290,8 +290,8 @@ public:
     }
     Picture ();
     Picture (const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class Source : public Block, public BodyObject 
@@ -302,16 +302,16 @@ public:
         restricted_unpacker<StyleObject> (arg...);
     }
     Source ();
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class HorizontalLine : public Block, public BodyObject 
 {
 public:
     HorizontalLine ();
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class Quote : public Block, public BodyObject 
@@ -323,8 +323,8 @@ public:
     }
     Quote ();
     Quote (const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 class Label : public Block, public BodyObject 
@@ -336,8 +336,8 @@ public:
     }
     Label ();
     Label (const char*);
-    void outputOpening();
-    void outputClosing();
+    void outputOpening() const;
+    void outputClosing() const;
 };
 
 } // namespace WCP

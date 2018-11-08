@@ -6,10 +6,10 @@ Function::Function() {}
 Function::Function(std::function<void(void)> func) {
     function = func;
 }
-void Function::outputOpening() {
+void Function::outputOpening() const {
     function ();
 }
-void Function::outputClosing() {
+void Function::outputClosing() const {
 
 }
 } // namespace WCP

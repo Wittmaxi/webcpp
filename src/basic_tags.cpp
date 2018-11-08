@@ -5,12 +5,13 @@
 
 std::ostream &operator<<(std::ostream &os, const WCP::Block &other) //other NEEDS to be const because else you cannot pass it as rvalue to cout. 
 {
-    WCP::Block* obj_ptr = const_cast <WCP::Block*> (&other); 
-    obj_ptr->outputOpening();
-    for (auto i : obj_ptr->containedBlocks)
+    other.outputOpening();
+    for (const auto i : other.containedBlocks)
         os << (*i);
-    obj_ptr->outputClosing();
+    other.outputClosing();
+    return os;
 }
+
 
 std::ostream &operator<<(std::ostream& os, WCP::NamedAttribute& a) {
     std::cout << " ";
@@ -18,23 +19,22 @@ std::ostream &operator<<(std::ostream& os, WCP::NamedAttribute& a) {
     return os;
 }
 
-std::ostream &operator<<(std::ostream &os, std::vector<std::shared_ptr <WCP::NamedAttribute>> &other)
+std::ostream &operator<<(std::ostream &os, const std::vector<std::shared_ptr <WCP::NamedAttribute>> &other)
 {
-    for (const auto &i : other) {
+    for (const auto i : other)
         std::cout << (*i);
-    }
     return os;
 }
 
 namespace WCP
 {
-void Document::outputOpening()
+void Document::outputOpening() const
 {   
     std::cout << "Content-type:text/html\r\n\r\n";
     std::cout << "<!DOCTYPE html>";
     std::cout << "<html" << attributes << ">";
 }
-void Document::outputClosing()
+void Document::outputClosing() const
 {
     std::cout << "</html>";
 }

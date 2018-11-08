@@ -14,8 +14,8 @@ class Document : public Block
 public:
   template <class... T>
   Document(T... arg) { unpacker(arg...);}
-  void outputOpening();
-  void outputClosing();
+  void outputOpening() const;
+  void outputClosing() const;
 };
 } // namespace WCP
 

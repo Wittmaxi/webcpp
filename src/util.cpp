@@ -11,20 +11,20 @@ Text::Text (std::string arg) {
 }
 Text::Text (const char *arg) : Text(std::string(arg)) {}
 Text::Text(){}
-void Text::outputOpening() {
+void Text::outputOpening() const {
     std::cout << containedText;
 }
-void Text::outputClosing() {}
+void Text::outputClosing() const {}
 
 UnformattedText::UnformattedText (std::string arg) {
     containedText = arg;
 }
 UnformattedText::UnformattedText (const char *arg) : UnformattedText(std::string(arg)) {}
 UnformattedText::UnformattedText(){}
-void UnformattedText::outputOpening() {
+void UnformattedText::outputOpening() const {
     std::cout << containedText;
 }
-void UnformattedText::outputClosing() {}
+void UnformattedText::outputClosing() const {}
 
 ConvenientText::ConvenientText (std::string arg) {
     containedText = arg;
@@ -36,8 +36,8 @@ ConvenientText::ConvenientText (std::string arg) {
 }
 ConvenientText::ConvenientText (const char *arg) : ConvenientText(std::string(arg)) {}
 ConvenientText::ConvenientText(){}
-void ConvenientText::outputOpening() {
+void ConvenientText::outputOpening() const {
     std::cout << containedText;
 }
-void ConvenientText::outputClosing() {}
+void ConvenientText::outputClosing() const {}
 }
