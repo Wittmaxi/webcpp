@@ -10,7 +10,6 @@ public:
     restricted_unpacker<HeaderObject>(arg...);
   }
   void outputOpening();
-  void outputPayload();
   void outputClosing();
 };
 
@@ -19,7 +18,6 @@ public:
   Title();
   Title(Text arg);
   void outputOpening();
-  void outputPayload();
   void outputClosing();
 };
 
@@ -28,7 +26,6 @@ public:
   Include(std::string _href, std::string _type, std::string _rel);
   Include();
   void outputOpening();
-  void outputPayload();
   void outputClosing();
 
 private:
@@ -40,7 +37,6 @@ public:
   IncludeScript(std::string _href);
   IncludeScript();
   void outputOpening();
-  void outputPayload();
   void outputClosing();
 
 private:
@@ -52,7 +48,6 @@ public:
   HttpEquiv();
   HttpEquiv(std::string equiv, std::string content);
   void outputOpening();
-  void outputPayload();
   void outputClosing();
 private:
     std::string equiv, content;
@@ -62,8 +57,7 @@ class Charset : public Block, public HeaderObject {
 public:
   Charset();
   Charset(std::string charset);
-  void outputOpening();
-  void outputPayload();
+  void outputOpening();  
   void outputClosing();
 private:
     std::string charset;
@@ -74,7 +68,6 @@ public:
   Meta();
   Meta(std::string name, std::string content);
   void outputOpening();
-  void outputPayload();
   void outputClosing();
 private:
     std::string name, content;

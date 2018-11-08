@@ -15,7 +15,6 @@ public:
   template <class... T>
   Document(T... arg) { unpacker(arg...);}
   void outputOpening();
-  void outputPayload();
   void outputClosing();
 };
 } // namespace WCP
