@@ -1,4 +1,5 @@
 #include "header/http_header.hpp"
+#include <iostream>
 
 namespace WCP
 {
@@ -15,12 +16,15 @@ void HTTPHeader::addFlag(std::string flag)
 {
     flags.push_back(flag);
 }
+void HTTPHeader::print() {
+    std::cout << contentType << "\n";
+    for (const auto &i : flags)
+        std::cout << i << "\n";
+    std::cout << "\r\n\r\n";
+}
 std::ostream &HTTPHeader::operator<<(std::ostream &os)
 {
-    os << contentType << "\n";
-    for (const auto &i : flags)
-        os << i << "\n";
-    os << "\r\n\r\n";
+    print();
     return os;
 }
 } // namespace WCP
