@@ -27,6 +27,7 @@ namespace UTIL {
 extern std::string to_print;
 extern std::map <std::string, std::string> GET_MAP;
 extern std::map <std::string, std::string> POST_MAP;
+extern std::map <std::string, std::string> COOKIE_MAP;
 
 std::string removeBrowserEscapes (std::string text);
 std::string removeUntil (std::string toProcess, char until);
@@ -35,6 +36,7 @@ std::string getPostData ();
 std::string extractAndRemoveGetKeyValueFromString (std::string temporary);
 void initializeGet();
 void initializePost();
+void initializeCookies ();
 }
 
 void initializeENV ();

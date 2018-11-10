@@ -9,6 +9,7 @@ namespace UTIL {
 std::string to_print;
 std::map <std::string, std::string> GET_MAP;
 std::map <std::string, std::string> POST_MAP;
+std::map <std::string, std::string> COOKIE_MAP;
 
 std::string removeUntil (std::string toProcess, char until) {
     auto it = std::find(toProcess.begin(), toProcess.end(), until);
@@ -39,10 +40,10 @@ std::string removeBrowserEscapes (std::string text) {
     return temp_string;
 }
 
-std::string extractAndRemoveGetKeyValueFromString (std::string temporary, std::map<std::string, std::string> &mapToUse) {
+std::string extractAndRemoveGetKeyValueFromString (std::string temporary, std::map<std::string, std::string> &mapToUse, char termination = '&') {
     std::string key = UTIL::getUntil(temporary, '=');
     temporary = UTIL::removeUntil (temporary, '=');
-    std::string value = UTIL::getUntil (temporary, '&');
+    std::string value = UTIL::getUntil (temporary, termination);
     mapToUse [key] = value;
     return temporary;
 } 
@@ -87,6 +88,18 @@ void initializePost () {
         temporary = UTIL::removeUntil(temporary, '&');
     }
 }
+
+void initializeCookies () {
+    if (getenv ("HTTP_COOKIE") == nullptr) {
+        std::cerr << "WEBCPP and it's HTTP accessor must be run in a webserver-context!";
+        return;
+    }
+    std::string temporary = std::string(getenv ("HTTP_COOKIE"));
+    while (UTIL::getUntil(temporary, '=') != "") {
+        temporary = extractAndRemoveGetKeyValueFromString (temporary, GET_MAP, ';');
+        temporary = UTIL::removeUntil(temporary, ';');
+    }
+}
 }
 
 
@@ -101,6 +114,8 @@ std::string GET (std::string name) {
 std::string POST (std::string name) {
     return UTIL::removeBrowserEscapes(UTIL::POST_MAP [name]);
 }
-
+std::string COOKIE (std::string name) {
+    return UTIL::COOKIE_MAP[name];
+}
 }
 } // namespace WCP
