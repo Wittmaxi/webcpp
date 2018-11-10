@@ -6,6 +6,7 @@ compile:
 	g++ -c ./src/body_tags.cpp -o ./build/body_tags.o -O3
 	g++ -c ./src/env_variables.cpp -o ./build/env_variables.o -O3
 	g++ -c ./src/header_tags.cpp -o ./build/header_tags.o -O3
+	g++ -c ./src/http_header.cpp -o ./build/http_header.o -O3
 	g++ -c ./src/specialized_tags.cpp -o ./build/specialized_tags.o -O3
 	g++ -c ./src/util.cpp -o ./build/util.o -O3
 	ar rvs ./build/libwcp.a ./build/*.o

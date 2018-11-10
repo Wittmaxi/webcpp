@@ -4,4 +4,5 @@
 #include "basic_tags.hpp"
 #include "util.hpp"
 #include "env_variables.hpp"
+#include "http_header.hpp"
 #endif
