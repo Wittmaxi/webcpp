@@ -265,3 +265,23 @@ Then, you can get both the arguments passed as POST and GET request with both
 
 ```WCP::ENV::GET (std::string name)``` and ```WCP::ENV::POST(std::string name)``` 
 Both functions return a UTF8-String that has already escaped the browser escape signals. 
+
+```WCP::ENV::COOKIE (std::string name)``` 
+Returns the value of the cookie with name "name".
+
+
+## HTTP Header
+An HTTP Header provides the browser with information about the webpage. 
+Webcpp has a class that generates HTTP Headers. That class is called ```WCP::HTTPHeader```
+
+```WCP::HTTPHeader::setContentType(std::string type);```
+adds an HTTP Header flag setting the content type
+
+```WCP::HTTPHeader::addCookie(std::string name, std::string value, bool HTTPonly, std::string expiry)```
+Sets a cookie.
+
+```WCP::HTTPHeader::addFlag (std::string flag)```
+Just outputs a plain HTTP flag.
+
+```WCP::HTTPHeader::print()```
+Prints the HTTP header. Has to be called before any other content has been generated.
