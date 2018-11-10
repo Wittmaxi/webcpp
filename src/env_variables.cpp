@@ -106,6 +106,7 @@ void initializeCookies () {
 void initializeENV () {
     UTIL::initializeGet();
     UTIL::initializePost();
+    UTIL::initializeCookies();
 }
 
 std::string GET (std::string name) {
