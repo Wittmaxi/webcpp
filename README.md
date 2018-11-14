@@ -10,7 +10,10 @@ cd webcpp
 make install 
 ```
 
-Include <webcpp/webcpp.hpp>, compile with -lwcp
+Include <webcpp/webcpp.hpp>.
+
+
+!! IMPORTANT : compile with -lwcp
 
 ## Compatibility and Future
 This library was developed on and for \*nix systems. A port to windows should be easy to do.
