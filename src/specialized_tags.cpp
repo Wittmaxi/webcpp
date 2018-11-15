@@ -3,8 +3,8 @@
 namespace WCP
 {
 Function::Function() {}
-Function::Function(std::function<void(void)> func) {
-    function = func;
+Function::Function(std::function<void(void)> &func) : function (func) 
+{
 }
 void Function::outputOpening() const {
     function ();

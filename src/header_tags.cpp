@@ -25,11 +25,8 @@ void Title::outputClosing() const
     std::cout << "</title>";
 }
 
-Include::Include(std::string _href, std::string _type, std::string _rel)
+Include::Include(std::string &href_, std::string &type_, std::string &rel_) :  type (type_), href(href_), rel (rel_) 
 {
-    rel = _rel;
-    type = _type;
-    href = _href;
 }
 Include::Include() {}
 void Include::outputOpening() const
@@ -38,9 +35,8 @@ void Include::outputOpening() const
 }
 void Include::outputClosing() const {}
 
-IncludeScript::IncludeScript(std::string _href)
+IncludeScript::IncludeScript(std::string &href_) : href(href_)
 {
-    href = _href;
 }
 IncludeScript::IncludeScript() {}
 void IncludeScript::outputOpening() const
@@ -53,10 +49,8 @@ void IncludeScript::outputClosing() const {
 
 
 HttpEquiv::HttpEquiv() {}
-HttpEquiv::HttpEquiv(std::string _equiv, std::string _content)
+HttpEquiv::HttpEquiv(std::string &equiv_, std::string &content_) : equiv (equiv_), content(content_)
 {
-    equiv = _equiv;
-    content = _content;
 }
 void HttpEquiv::outputOpening() const
 {
@@ -65,9 +59,8 @@ void HttpEquiv::outputOpening() const
 void HttpEquiv::outputClosing() const {}
 
 Charset::Charset() {}
-Charset::Charset(std::string _charset)
+Charset::Charset(std::string &charset_) : charset (charset_)
 {
-    charset = _charset;
 }
 void Charset::outputOpening() const
 {
@@ -76,10 +69,8 @@ void Charset::outputOpening() const
 void Charset::outputClosing() const {}
 
 Meta::Meta() {}
-Meta::Meta(std::string _name, std::string _content)
+Meta::Meta(std::string &name_, std::string &content_) : name (name_), content(content_)
 {
-    name = _name;
-    content = _content;
 }
 void Meta::outputOpening() const
 {

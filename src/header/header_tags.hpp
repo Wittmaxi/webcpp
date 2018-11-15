@@ -6,7 +6,8 @@
 namespace WCP {
 class Head : public Block {
 public:
-  template <class... T> Head(T... arg) {
+  template <class... T>
+  explicit Head(T... arg) {
     restricted_unpacker<HeaderObject>(arg...);
   }
   void outputOpening() const;
@@ -16,14 +17,14 @@ public:
 class Title : public Block, public HeaderObject {
 public:
   Title();
-  Title(Text arg);
+  explicit Title(Text arg);
   void outputOpening() const;
   void outputClosing() const;
 };
 
 class Include : public Block, public HeaderObject {
 public:
-  Include(std::string _href, std::string _type, std::string _rel);
+  Include(std::string &_href, std::string &_type, std::string &_rel);
   Include();
   void outputOpening() const;
   void outputClosing() const;
@@ -34,7 +35,7 @@ private:
 
 class IncludeScript : public Block, public HeaderObject {
 public:
-  IncludeScript(std::string _href);
+  explicit IncludeScript(std::string &_href);
   IncludeScript();
   void outputOpening() const;
   void outputClosing() const;
@@ -46,7 +47,7 @@ private:
 class HttpEquiv : public Block, public HeaderObject {
 public:
   HttpEquiv();
-  HttpEquiv(std::string equiv, std::string content);
+  explicit HttpEquiv(std::string &equiv, std::string &content);
   void outputOpening() const;
   void outputClosing() const;
 private:
@@ -56,7 +57,7 @@ private:
 class Charset : public Block, public HeaderObject {
 public:
   Charset();
-  Charset(std::string charset);
+  explicit Charset(std::string &charset);
   void outputOpening() const;  
   void outputClosing() const;
 private:
@@ -66,7 +67,7 @@ private:
 class Meta : public Block, public HeaderObject {
 public:
   Meta();
-  Meta(std::string name, std::string content);
+  explicit Meta(std::string &name, std::string &content);
   void outputOpening() const;
   void outputClosing() const;
 private:

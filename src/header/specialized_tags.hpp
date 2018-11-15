@@ -9,7 +9,7 @@ class Function : public Block, public DocumentObject
 {
 public: 
     Function ();
-    Function (std::function<void (void)> func);
+    explicit Function (std::function<void (void)> &func);
     void outputOpening() const;
     void outputClosing() const;
 private:

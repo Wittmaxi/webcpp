@@ -30,8 +30,6 @@ namespace WCP
 {
 void Document::outputOpening() const
 {   
-    std::cout << "Content-type:text/html\r\n\r\n";
-    std::cout << "<!DOCTYPE html>";
     std::cout << "<html" << attributes << ">";
 }
 void Document::outputClosing() const

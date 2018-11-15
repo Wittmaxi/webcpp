@@ -8,7 +8,7 @@ class Attribute : public NamedAttribute
 {
   public:
     Attribute();
-    Attribute(std::string);
+    explicit Attribute(std::string&);
     void printAttribute();
 
   private:
@@ -18,7 +18,7 @@ class ClassAttribute : public NamedAttribute
 {
   public:
     ClassAttribute();
-    ClassAttribute(std::string);
+    explicit ClassAttribute(std::string&);
     void printAttribute();
 
   private:
@@ -28,7 +28,7 @@ class IdAttribute : public NamedAttribute
 {
   public:
     IdAttribute();
-    IdAttribute(std::string);
+    explicit IdAttribute(std::string&);
     void printAttribute();
 
   private:
@@ -38,7 +38,7 @@ class StyleAttribute : public NamedAttribute
 {
   public:
     StyleAttribute();
-    StyleAttribute(std::string);
+    explicit StyleAttribute(std::string&);
     void printAttribute();
 
   private:
@@ -48,7 +48,7 @@ class SourceAttribute : public NamedAttribute
 {
   public:
     SourceAttribute();
-    SourceAttribute(std::string);
+    explicit SourceAttribute(std::string&);
     void printAttribute();
 
   private:
@@ -58,7 +58,7 @@ class HyperReference : public NamedAttribute
 {
   public:
     HyperReference();
-    HyperReference(std::string);
+    explicit HyperReference(std::string&);
     void printAttribute();
 
   private:
@@ -68,7 +68,7 @@ class FormMethod : public NamedAttribute
 {
   public:
     FormMethod();
-    FormMethod(std::string);
+    explicit FormMethod(std::string&);
     void printAttribute();
 
   private:
@@ -78,7 +78,7 @@ class InputType : public NamedAttribute
 {
   public:
     InputType();
-    InputType(std::string);
+    explicit InputType(std::string&);
     void printAttribute();
 
   private:
@@ -88,7 +88,7 @@ class InputName : public NamedAttribute
 {
   public:
     InputName();
-    InputName(std::string);
+    explicit InputName(std::string&);
     void printAttribute();
 
   private:
@@ -98,7 +98,7 @@ class InputValue : public NamedAttribute
 {
   public:
     InputValue();
-    InputValue(std::string);
+    explicit InputValue(std::string&);
     void printAttribute();
 
   private:

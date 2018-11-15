@@ -9,12 +9,12 @@ class Body : public Block
 {
   public:
     template <class... T>
-    Body(T... arg)
+    explicit Body(T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
     Body();
-    Body(const char*);
+    explicit Body(const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -23,12 +23,12 @@ class H1 : public Block, public BodyObject
 {
   public:
     template <class... T>
-    H1(T... arg)
+    explicit H1(T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
     H1();
-    H1(const char*);
+    explicit H1(const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -37,12 +37,12 @@ class H2 : public Block, public BodyObject
 {
   public:
     template <class... T>
-    H2(T... arg)
+    explicit H2(T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
     H2();
-    H2(const char*);
+    explicit H2(const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -51,12 +51,12 @@ class H3 : public Block, public BodyObject
 {
   public:
     template <class... T>
-    H3(T... arg)
+    explicit H3(T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
     H3();
-    H3(const char*);
+    explicit H3(const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -65,12 +65,12 @@ class H4 : public Block, public BodyObject
 {
   public:
     template <class... T>
-    H4(T... arg)
+    explicit H4(T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
     H4();
-    H4(const char*);
+    explicit H4(const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -79,12 +79,12 @@ class H5 : public Block, public BodyObject
 {
   public:
     template <class... T>
-    H5(T... arg)
+    explicit H5(T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
     H5();
-    H5(const char*);
+    explicit H5(const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -93,12 +93,12 @@ class H6 : public Block, public BodyObject
 {
   public:
     template <class... T>
-    H6(T... arg)
+    explicit H6(T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
     H6();
-    H6(const char*);
+    explicit H6(const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -116,11 +116,11 @@ class Centered : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Centered (T... arg) {
+    explicit Centered (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Centered ();
-    Centered (const char*);
+    explicit Centered (const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -129,11 +129,11 @@ class Table : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Table (T... arg) {
+    explicit Table (T... arg) {
         restricted_unpacker<TableObject> (arg...);
     }
     Table ();
-    Table (const char*);
+    explicit Table (const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -142,11 +142,11 @@ class Row : public Block, public TableObject
 {
 public:
     template<class... T>
-    Row (T... arg) {
+    explicit Row (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Row ();
-    Row (const char*);
+    explicit Row (const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -155,10 +155,10 @@ class Cell : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Cell (T... arg) {
+    explicit Cell (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
-    Cell (const char*);
+    explicit Cell (const char*);
     Cell ();
     void outputOpening() const;
     void outputClosing() const;
@@ -168,11 +168,11 @@ class HighlightedCell : public Block, public BodyObject
 {
 public:
     template<class... T>
-    HighlightedCell (T... arg) {
+    explicit HighlightedCell (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     HighlightedCell ();
-    HighlightedCell (const char*);
+    explicit HighlightedCell (const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -181,11 +181,11 @@ class Container : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Container (T... arg) {
+    explicit Container (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Container ();
-    Container (const char*);
+    explicit Container (const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -194,11 +194,11 @@ class NavBar : public Block, public BodyObject
 {
 public:
     template<class... T>
-    NavBar (T... arg) {
+    explicit NavBar (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     NavBar ();
-    NavBar (const char*);
+    explicit NavBar (const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -207,11 +207,11 @@ class HyperLink : public Block, public BodyObject
 {
 public:
     template<class... T>
-    HyperLink (T... arg) {
+    explicit HyperLink (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     HyperLink ();
-    HyperLink(const char*);
+    explicit HyperLink(const char*);
     void outputOpening() const;
     void outputClosing() const;
 private: 
@@ -222,11 +222,11 @@ class Marked : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Marked (T... arg) {
+    explicit Marked (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Marked ();
-    Marked (const char*);
+    explicit Marked (const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -235,11 +235,11 @@ class Form : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Form (T... arg) {
+    explicit Form (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Form ();
-    Form (const char*);
+    explicit Form (const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -248,7 +248,7 @@ class Input : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Input (T... arg) {
+    explicit Input (T... arg) {
         restricted_unpacker<StyleObject> (arg...);
     }
     Input ();
@@ -260,11 +260,11 @@ class Paragraph : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Paragraph (T... arg) {
+    explicit Paragraph (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Paragraph ();
-    Paragraph (const char*);
+    explicit Paragraph (const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -273,7 +273,7 @@ class Image : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Image (T... arg) {
+    explicit Image (T... arg) {
         restricted_unpacker<StyleObject> (arg...);
     }
     Image ();
@@ -285,11 +285,11 @@ class Picture : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Picture (T... arg) {
+    explicit Picture (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Picture ();
-    Picture (const char*);
+    explicit Picture (const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -298,7 +298,7 @@ class Source : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Source (T... arg) {
+    explicit Source (T... arg) {
         restricted_unpacker<StyleObject> (arg...);
     }
     Source ();
@@ -318,11 +318,11 @@ class Quote : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Quote (T... arg) {
+    explicit Quote (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Quote ();
-    Quote (const char*);
+    explicit Quote (const char*);
     void outputOpening() const;
     void outputClosing() const;
 };
@@ -331,11 +331,11 @@ class Label : public Block, public BodyObject
 {
 public:
     template<class... T>
-    Label (T... arg) {
+    explicit Label (T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Label ();
-    Label (const char*);
+    explicit Label (const char*);
     void outputOpening() const;
     void outputClosing() const;
 };

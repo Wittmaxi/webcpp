@@ -3,8 +3,8 @@
 #include <regex>
 
 namespace WCP {
-Text::Text (std::string arg) {
-    containedText = arg;
+Text::Text (const std::string &arg) : containedText(arg)
+{
     containedText = std::regex_replace(containedText, std::regex("&"), "&amp;");
     containedText = std::regex_replace(containedText, std::regex(">"), "&gt;");
     containedText = std::regex_replace(containedText, std::regex("<"), "&lt;");
@@ -16,8 +16,8 @@ void Text::outputOpening() const {
 }
 void Text::outputClosing() const {}
 
-UnformattedText::UnformattedText (std::string arg) {
-    containedText = arg;
+UnformattedText::UnformattedText (const std::string &arg) : containedText(arg)
+{
 }
 UnformattedText::UnformattedText (const char *arg) : UnformattedText(std::string(arg)) {}
 UnformattedText::UnformattedText(){}
@@ -26,8 +26,8 @@ void UnformattedText::outputOpening() const {
 }
 void UnformattedText::outputClosing() const {}
 
-ConvenientText::ConvenientText (std::string arg) {
-    containedText = arg;
+ConvenientText::ConvenientText (const std::string &arg) : containedText(arg)
+{
     containedText = std::regex_replace(containedText, std::regex("&"), "&amp;");
     containedText = std::regex_replace(containedText, std::regex(">"), "&gt;");
     containedText = std::regex_replace(containedText, std::regex("<"), "&lt;");

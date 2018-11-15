@@ -4,7 +4,7 @@
 namespace WCP
 {
 Attribute::Attribute() {}
-Attribute::Attribute(std::string cn) : name (cn)
+Attribute::Attribute(std::string &cn) : name (cn)
 {
 }
 void Attribute::printAttribute()
@@ -13,7 +13,7 @@ void Attribute::printAttribute()
 }
 
 ClassAttribute::ClassAttribute() {}
-ClassAttribute::ClassAttribute(std::string cn) : name (cn)
+ClassAttribute::ClassAttribute(std::string &cn) : name (cn)
 {
     name = std::regex_replace(name, std::regex("\""), "&quot;");
     name = std::regex_replace(name, std::regex("\'"), "&#39");
@@ -25,7 +25,7 @@ void ClassAttribute::printAttribute()
 
 
 IdAttribute::IdAttribute() {}
-IdAttribute::IdAttribute(std::string cn) : name (cn)
+IdAttribute::IdAttribute(std::string &cn) : name (cn)
 {
     name = std::regex_replace(name, std::regex("\""), "&quot;");
     name = std::regex_replace(name, std::regex("\'"), "&#39");
@@ -36,7 +36,7 @@ void IdAttribute::printAttribute()
 }
 
 StyleAttribute::StyleAttribute() {}
-StyleAttribute::StyleAttribute(std::string cn) : name (cn)
+StyleAttribute::StyleAttribute(std::string &cn) : name (cn)
 {
     name = std::regex_replace(name, std::regex("\""), "&quot;");
     name = std::regex_replace(name, std::regex("\'"), "&#39");
@@ -47,7 +47,7 @@ void StyleAttribute::printAttribute()
 }
 
 HyperReference::HyperReference() {}
-HyperReference::HyperReference(std::string cn) : name (cn)
+HyperReference::HyperReference(std::string &cn) : name (cn)
 {
     name = std::regex_replace(name, std::regex("\""), "&quot;");
     name = std::regex_replace(name, std::regex("\'"), "&#39");
@@ -58,7 +58,7 @@ void HyperReference::printAttribute()
 }
 
 FormMethod::FormMethod() {}
-FormMethod::FormMethod(std::string cn) : method (cn)
+FormMethod::FormMethod(std::string &cn) : method (cn)
 {
     method = std::regex_replace(method, std::regex("\""), "&quot;");
     method = std::regex_replace(method, std::regex("\'"), "&#39");
@@ -69,7 +69,7 @@ void FormMethod::printAttribute()
 }
 
 InputType::InputType() {}
-InputType::InputType(std::string cn) : type (cn)
+InputType::InputType(std::string &cn) : type (cn)
 {
     type = std::regex_replace(type, std::regex("\""), "&quot;");
     type = std::regex_replace(type, std::regex("\'"), "&#39");
@@ -80,7 +80,7 @@ void InputType::printAttribute()
 }
 
 InputName::InputName() {}
-InputName::InputName(std::string cn) : name (cn)
+InputName::InputName(std::string &cn) : name (cn)
 {
     name = std::regex_replace(name, std::regex("\""), "&quot;");
     name = std::regex_replace(name, std::regex("\'"), "&#39");
@@ -91,7 +91,7 @@ void InputName::printAttribute()
 }
 
 InputValue::InputValue() {}
-InputValue::InputValue(std::string cn) : name (cn)
+InputValue::InputValue(std::string &cn) : name (cn)
 {
     name = std::regex_replace(name, std::regex("\""), "&quot;");
     name = std::regex_replace(name, std::regex("\'"), "&#39");
@@ -102,7 +102,7 @@ void InputValue::printAttribute()
 }
 
 SourceAttribute::SourceAttribute() {}
-SourceAttribute::SourceAttribute(std::string cn) : name (cn)
+SourceAttribute::SourceAttribute(std::string &cn) : name (cn)
 {
     name = std::regex_replace(name, std::regex("\""), "&quot;");
     name = std::regex_replace(name, std::regex("\'"), "&#39");

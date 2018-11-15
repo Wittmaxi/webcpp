@@ -3,16 +3,16 @@
 
 namespace WCP
 {
-void HTTPHeader::setContentType(std::string ct)
+void HTTPHeader::setContentType(std::string &ct)
 {
     contentType = ct;
 }
-void HTTPHeader::addCookie(std::string name, std::string value, bool HTTPonly, std::string expiry)
+void HTTPHeader::addCookie(std::string &name, std::string &value, bool HTTPonly, std::string &expiry)
 {
     std::string flag = "Set-Cookie: " + name + "=" + value + ";" + (HTTPonly ? "Secure; HttpOnly;" : "") + (expiry.size() != 0 ? expiry : "");
     addFlag(flag);
 }
-void HTTPHeader::addFlag(std::string flag)
+void HTTPHeader::addFlag(std::string &flag)
 {
     flags.push_back(flag);
 }

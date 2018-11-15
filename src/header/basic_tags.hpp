@@ -13,7 +13,7 @@ class Document : public Block
 {
 public:
   template <class... T>
-  Document(T... arg) { unpacker(arg...);}
+  explicit Document(T... arg) { unpacker(arg...);}
   void outputOpening() const;
   void outputClosing() const;
 };
