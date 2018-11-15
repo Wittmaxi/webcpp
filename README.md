@@ -31,7 +31,7 @@ The template engine works by having blocks that accept an infinite amount of oth
 
 For example, like this:
 
-```
+```c++
 BlockType1 {
   BlockType2{ 
   },
@@ -51,7 +51,7 @@ BlockType1 {
 ---
 Any Block implemented by the Library can be outputted by means of std::cout. 
 Example: 
-```
+```c++
 std::cout << Document {
 
 };
