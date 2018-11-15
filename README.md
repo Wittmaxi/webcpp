@@ -1,4 +1,7 @@
 # webcpp
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/72390726fa43493aa05070081c40c3e9)](https://app.codacy.com/app/Wittmaxi/webcpp?utm_source=github.com&utm_medium=referral&utm_content=Wittmaxi/webcpp&utm_campaign=Badge_Grade_Dashboard)
+
 A simple framework to organize C++ CGI applications
 
 ## Installation 
