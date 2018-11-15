@@ -4,14 +4,13 @@ A simple framework to organize C++ CGI applications
 ## Installation 
 In order to Install the library, run
 
-```
-git clone https://github.com/Wittmaxi/webcpp
-cd webcpp
-make install 
+```console
+user@name: git clone https://github.com/Wittmaxi/webcpp
+user@name: cd webcpp
+user@name: make install 
 ```
 
 Include <webcpp/webcpp.hpp>.
-
 
 !! IMPORTANT : compile with -lwcp
 
@@ -46,8 +45,8 @@ BlockType1 {
   }
 }
 ```
-- The entire Library is wrapped inside of the namespace ```WCP::```.
-- All Blocks inherit from WCP::Block
+  - The entire Library is wrapped inside of the namespace ```WCP::```.
+  - All Blocks inherit from WCP::Block
 
 ---
 Any Block implemented by the Library can be outputted by means of std::cout. 
@@ -57,9 +56,7 @@ std::cout << Document {
 
 };
 ```
-
 ---
-
 The entire Page should be wrapped inside of the ```Document``` block, which generates the ```<html> ... </html>``` part of the website. 
 
 ### Blocks commonly found in HTML-Headers
@@ -110,7 +107,6 @@ Generate the ```<h1> </h1>``` to ```<h6> </h6>``` tags respectively.
 ```WCP::LineBreak```
 Generates a linebreak. One object of it is created, called Break.
 
-
 ---
 
 ```WCP::Centered```
@@ -152,7 +148,6 @@ Creates a navbar.
 Creates an Hyperlink.
 
 ---
-
 
 ```WCP::Marked```
 Creates a Marked section
@@ -216,6 +211,7 @@ Prints out an unprocessed Text.
 Prints out a Text that escapes dangerous characters, changes line breaks "\n" to the html-tag "< br >" and replace tabulators "\t" with a box that is 40 pixels wide.
 
 ---
+
 ```WCP::Function```
 Expects a std::function <void(void)> as argument. It doesn't print anything, but runs the given function in between the opening parent and closing parent tag. 
 
@@ -228,18 +224,22 @@ HTML - Tags can have attributes. Any Block, that can take an infinite amount of 
 An attribute that can be anything. 
 
 ---
+
 ```WCP::ClassAttribute```
 Assigns one or multiple Css-Classes to the Block.
 
 ---
+
 ```WCP::IdAttribute```
 Assigns one or multiple CSS-IDs to the Block.
 
 ---
+
 ```WCP::StyleAttribute```
 Directly assigns Css-Style to the block
 
 ---
+
 ```WCP::SourceAttribute```
 Assigns a content-source to a Block
 
@@ -248,17 +248,19 @@ Assigns a content-source to a Block
 Assigns a href attribute to a Block.
 
 ---
+
 ```WCP::FormMethod```
 Sets the Method of data processing of a Form. Possible values "GET" or "POST"
 
 ---
+
 ```WCP::InputType```
 Sets the type of an Input Block
 
 ---
+
 ```WCP::InputValue```
 Sets the standard value of an Input Block.
-
 
 ### Environment Variables
 All the Environment Variables are handled by the Namespace WCP::ENV.
@@ -271,7 +273,6 @@ Both functions return a UTF8-String that has already escaped the browser escape 
 
 ```WCP::ENV::COOKIE (std::string name)``` 
 Returns the value of the cookie with name "name".
-
 
 ## HTTP Header
 An HTTP Header provides the browser with information about the webpage. 
