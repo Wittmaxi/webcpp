@@ -1,5 +1,5 @@
-#ifndef __SPECIALIZED__TAGS
-#define __SPECIALIZED__TAGS
+#ifndef SPECIALIZED_TAGS
+#define SPECIALIZED_TAGS
 
 #include "base_traits.hpp"
 #include <functional>
@@ -9,7 +9,7 @@ class Function : public Block, public DocumentObject
 {
 public: 
     Function ();
-    explicit Function (std::function<void (void)> &func);
+    explicit Function (const std::function<void (void)> &func);
     void outputOpening() const;
     void outputClosing() const;
 private:

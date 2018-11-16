@@ -1,5 +1,5 @@
-#ifndef DEFINED__COOKIES__HPP
-#define  DEFINED__COOKIES__HPP
+#ifndef  DEFINED_COOKIES_HPP
+#define   DEFINED_COOKIES_HPP
 #include <string>
 #include <vector>
 #include <ostream>

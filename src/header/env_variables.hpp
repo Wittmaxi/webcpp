@@ -1,5 +1,5 @@
-#ifndef __DEFINE__ENV__VARIABLES
-#define __DEFINE__ENV__VARIABLES
+#ifndef DEFINE_ENV_VARIABLES
+#define DEFINE_ENV_VARIABLES
 #include <string>
 #include <array>
 #include <stdlib.h>

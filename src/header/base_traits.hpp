@@ -1,5 +1,5 @@
-#ifndef __DEFINED__BASE__CLASSES
-#define __DEFINED__BASE__CLASSES
+#ifndef DEFINED_BASE_CLASSES
+#define DEFINED_BASE_CLASSES
 #include <iostream>
 #include <string>
 #include <vector>

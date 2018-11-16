@@ -1,5 +1,5 @@
-#ifndef __DEFINED__BASIC__TAGS
-#define __DEFINED__BASIC__TAGS
+#ifndef DEFINED_BASIC_TAGS
+#define DEFINED_BASIC_TAGS
 #include "base_traits.hpp"
 #include "header_tags.hpp"
 #include "body_tags.hpp"

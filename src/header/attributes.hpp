@@ -1,5 +1,5 @@
-#ifndef __DEFINED__ATTRIBUTES
-#define __DEFINED__ATTRIBUTES
+#ifndef DEFINED_ATTRIBUTES
+#define DEFINED_ATTRIBUTES
 #include "base_traits.hpp"
 
 namespace WCP
@@ -8,7 +8,8 @@ class Attribute : public NamedAttribute
 {
   public:
     Attribute();
-    explicit Attribute(std::string&);
+    explicit Attribute(const std::string&);
+    explicit Attribute(const char*);
     void printAttribute();
 
   private:
@@ -18,7 +19,8 @@ class ClassAttribute : public NamedAttribute
 {
   public:
     ClassAttribute();
-    explicit ClassAttribute(std::string&);
+    explicit ClassAttribute(const std::string&);
+    explicit ClassAttribute(const char*);
     void printAttribute();
 
   private:
@@ -28,7 +30,8 @@ class IdAttribute : public NamedAttribute
 {
   public:
     IdAttribute();
-    explicit IdAttribute(std::string&);
+    explicit IdAttribute(const std::string&);
+    explicit IdAttribute(const char*);
     void printAttribute();
 
   private:
@@ -38,7 +41,8 @@ class StyleAttribute : public NamedAttribute
 {
   public:
     StyleAttribute();
-    explicit StyleAttribute(std::string&);
+    explicit StyleAttribute(const std::string&);
+    explicit StyleAttribute(const char*);
     void printAttribute();
 
   private:
@@ -48,7 +52,8 @@ class SourceAttribute : public NamedAttribute
 {
   public:
     SourceAttribute();
-    explicit SourceAttribute(std::string&);
+    explicit SourceAttribute(const std::string&);
+    explicit SourceAttribute(const char*);
     void printAttribute();
 
   private:
@@ -58,7 +63,8 @@ class HyperReference : public NamedAttribute
 {
   public:
     HyperReference();
-    explicit HyperReference(std::string&);
+    explicit HyperReference(const std::string&);
+    explicit HyperReference(const char*);
     void printAttribute();
 
   private:
@@ -68,7 +74,8 @@ class FormMethod : public NamedAttribute
 {
   public:
     FormMethod();
-    explicit FormMethod(std::string&);
+    explicit FormMethod(const std::string&);
+    explicit FormMethod(const char*);
     void printAttribute();
 
   private:
@@ -78,7 +85,8 @@ class InputType : public NamedAttribute
 {
   public:
     InputType();
-    explicit InputType(std::string&);
+    explicit InputType(const std::string&);
+    explicit InputType(const char*);
     void printAttribute();
 
   private:
@@ -88,7 +96,8 @@ class InputName : public NamedAttribute
 {
   public:
     InputName();
-    explicit InputName(std::string&);
+    explicit InputName(const std::string&);
+    explicit InputName(const char*);
     void printAttribute();
 
   private:
@@ -98,7 +107,8 @@ class InputValue : public NamedAttribute
 {
   public:
     InputValue();
-    explicit InputValue(std::string&);
+    explicit InputValue(const std::string&);
+    explicit InputValue(const char*);
     void printAttribute();
 
   private:

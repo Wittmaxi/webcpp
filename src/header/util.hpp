@@ -1,5 +1,5 @@
-#ifndef __DEFINED__UTIL
-#define __DEFINED__UTIL
+#ifndef DEFINED_UTIL
+#define DEFINED_UTIL
 #include "base_traits.hpp"
 #include <ostream>
 
@@ -8,8 +8,8 @@ namespace WCP
 class Text : public Block, public HeaderObject, public BodyObject
 {
 public:
-  explicit Text(const char *arg);
-  explicit Text(const std::string&);
+  Text(const char *arg);
+  Text(const std::string&);
   Text();
   void outputOpening() const;
   void outputClosing() const;
@@ -21,8 +21,8 @@ private:
 class UnformattedText : public Block, public HeaderObject, public BodyObject
 {
 public:
-  explicit UnformattedText(const char *arg);
-  explicit UnformattedText(const std::string&);
+  UnformattedText(const char *arg);
+  UnformattedText(const std::string&);
   UnformattedText();
   void outputOpening() const;
   void outputClosing() const;
@@ -34,8 +34,8 @@ private:
 class ConvenientText : public Block, public HeaderObject, public BodyObject
 {
 public:
-  explicit ConvenientText(const char *arg);
-  explicit ConvenientText(const std::string&);
+  ConvenientText(const char *arg);
+  ConvenientText(const std::string&);
   ConvenientText();
   void outputOpening() const;
   void outputClosing() const;

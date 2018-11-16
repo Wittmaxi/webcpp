@@ -1,5 +1,5 @@
-#ifndef __DEFINED__HEADER__TAGS
-#define __DEFINED__HEADER__TAGS
+#ifndef DEFINED_HEADER_TAGS
+#define DEFINED_HEADER_TAGS
 #include "base_traits.hpp"
 #include "util.hpp"
 
@@ -7,7 +7,7 @@ namespace WCP {
 class Head : public Block {
 public:
   template <class... T>
-  explicit Head(T... arg) {
+  explicit Head(const T... arg) {
     restricted_unpacker<HeaderObject>(arg...);
   }
   void outputOpening() const;
@@ -24,7 +24,7 @@ public:
 
 class Include : public Block, public HeaderObject {
 public:
-  Include(std::string &_href, std::string &_type, std::string &_rel);
+  Include(const std::string &_href, const std::string &_type, const std::string &_rel);
   Include();
   void outputOpening() const;
   void outputClosing() const;
@@ -35,7 +35,7 @@ private:
 
 class IncludeScript : public Block, public HeaderObject {
 public:
-  explicit IncludeScript(std::string &_href);
+  explicit IncludeScript(const std::string &_href);
   IncludeScript();
   void outputOpening() const;
   void outputClosing() const;
@@ -47,7 +47,7 @@ private:
 class HttpEquiv : public Block, public HeaderObject {
 public:
   HttpEquiv();
-  explicit HttpEquiv(std::string &equiv, std::string &content);
+  explicit HttpEquiv(const std::string &equiv, const std::string &content);
   void outputOpening() const;
   void outputClosing() const;
 private:
@@ -57,7 +57,7 @@ private:
 class Charset : public Block, public HeaderObject {
 public:
   Charset();
-  explicit Charset(std::string &charset);
+  explicit Charset(const std::string &charset);
   void outputOpening() const;  
   void outputClosing() const;
 private:
@@ -67,7 +67,7 @@ private:
 class Meta : public Block, public HeaderObject {
 public:
   Meta();
-  explicit Meta(std::string &name, std::string &content);
+  explicit Meta(const std::string &name, const std::string &content);
   void outputOpening() const;
   void outputClosing() const;
 private:

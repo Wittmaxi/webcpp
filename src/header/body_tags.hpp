@@ -1,5 +1,5 @@
-#ifndef __BODY__TAGS
-#define __BODY__TAGS
+#ifndef BODY_TAGS
+#define BODY_TAGS
 #include "base_traits.hpp"
 #include "util.hpp"
 
