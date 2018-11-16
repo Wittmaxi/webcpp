@@ -43,6 +43,7 @@ void initializeENV ();
 
 std::string GET (std::string name);
 std::string POST (std::string name);
+std::string COOKIE (std::string name);
 
 }
 } // namespace WCP

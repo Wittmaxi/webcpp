@@ -42,6 +42,7 @@ std::string removeBrowserEscapes (std::string text) {
 
 std::string extractAndRemoveGetKeyValueFromString (std::string temporary, std::map<std::string, std::string> &mapToUse, char termination = '&') {
     std::string key = UTIL::getUntil(temporary, '=');
+    key = std::regex_replace(key, std::regex(" "), "");
     temporary = UTIL::removeUntil (temporary, '=');
     std::string value = UTIL::getUntil (temporary, termination);
     mapToUse [key] = value;
@@ -96,7 +97,7 @@ void initializeCookies () {
     }
     std::string temporary = std::string(getenv ("HTTP_COOKIE"));
     while (UTIL::getUntil(temporary, '=') != "") {
-        temporary = extractAndRemoveGetKeyValueFromString (temporary, GET_MAP, ';');
+        temporary = extractAndRemoveGetKeyValueFromString (temporary, COOKIE_MAP, ';');
         temporary = UTIL::removeUntil(temporary, ';');
     }
 }

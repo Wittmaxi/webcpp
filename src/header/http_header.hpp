@@ -7,9 +7,9 @@
 namespace WCP {
 class HTTPHeader {
 public:
-    void setContentType (std::string &ct);
-    void addCookie (std::string &name, std::string &value, bool HTTPonly, std::string &expiry);
-    void addFlag (std::string &flag);
+    void setContentType (const std::string &ct);
+    void addCookie (const std::string &name, const std::string &value, const bool HTTPonly, const std::string &expiry);
+    void addFlag (const std::string &flag);
     void print();
     std::ostream& operator<< (std::ostream& os);
 private:

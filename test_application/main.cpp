@@ -69,6 +69,8 @@ Container {ClassAttribute {"row"},
 int main()
 {
 ENV::initializeENV();
+HTTPHeader myHeader;
+myHeader.addCookie("username", "maxi", false, "");
 
 Document myDocument{
 projectHeader,
@@ -78,5 +80,6 @@ Body {
 }
 };
 
+myHeader.print();
 std::cout << myDocument;
 }

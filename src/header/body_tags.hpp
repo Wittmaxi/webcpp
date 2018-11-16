@@ -9,7 +9,7 @@ class Body : public Block
 {
   public:
     template <class... T>
-    explicit Body(T... arg)
+    explicit Body(const T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
@@ -23,7 +23,7 @@ class H1 : public Block, public BodyObject
 {
   public:
     template <class... T>
-    explicit H1(T... arg)
+    explicit H1(const T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
@@ -37,7 +37,7 @@ class H2 : public Block, public BodyObject
 {
   public:
     template <class... T>
-    explicit H2(T... arg)
+    explicit H2(const T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
@@ -51,7 +51,7 @@ class H3 : public Block, public BodyObject
 {
   public:
     template <class... T>
-    explicit H3(T... arg)
+    explicit H3(const T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
@@ -65,7 +65,7 @@ class H4 : public Block, public BodyObject
 {
   public:
     template <class... T>
-    explicit H4(T... arg)
+    explicit H4(const T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
@@ -79,7 +79,7 @@ class H5 : public Block, public BodyObject
 {
   public:
     template <class... T>
-    explicit H5(T... arg)
+    explicit H5(const T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
@@ -93,7 +93,7 @@ class H6 : public Block, public BodyObject
 {
   public:
     template <class... T>
-    explicit H6(T... arg)
+    explicit H6(const T... arg)
     {
         restricted_unpacker<BodyObject>(arg...);
     }
@@ -116,7 +116,7 @@ class Centered : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Centered (T... arg) {
+    explicit Centered (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Centered ();
@@ -129,7 +129,7 @@ class Table : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Table (T... arg) {
+    explicit Table (const T... arg) {
         restricted_unpacker<TableObject> (arg...);
     }
     Table ();
@@ -142,7 +142,7 @@ class Row : public Block, public TableObject
 {
 public:
     template<class... T>
-    explicit Row (T... arg) {
+    explicit Row (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Row ();
@@ -155,7 +155,7 @@ class Cell : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Cell (T... arg) {
+    explicit Cell (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     explicit Cell (const char*);
@@ -168,7 +168,7 @@ class HighlightedCell : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit HighlightedCell (T... arg) {
+    explicit HighlightedCell (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     HighlightedCell ();
@@ -181,7 +181,7 @@ class Container : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Container (T... arg) {
+    explicit Container (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Container ();
@@ -194,7 +194,7 @@ class NavBar : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit NavBar (T... arg) {
+    explicit NavBar (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     NavBar ();
@@ -207,7 +207,7 @@ class HyperLink : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit HyperLink (T... arg) {
+    explicit HyperLink (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     HyperLink ();
@@ -222,7 +222,7 @@ class Marked : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Marked (T... arg) {
+    explicit Marked (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Marked ();
@@ -235,7 +235,7 @@ class Form : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Form (T... arg) {
+    explicit Form (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Form ();
@@ -248,7 +248,7 @@ class Input : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Input (T... arg) {
+    explicit Input (const T... arg) {
         restricted_unpacker<StyleObject> (arg...);
     }
     Input ();
@@ -260,7 +260,7 @@ class Paragraph : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Paragraph (T... arg) {
+    explicit Paragraph (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Paragraph ();
@@ -273,7 +273,7 @@ class Image : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Image (T... arg) {
+    explicit Image (const T... arg) {
         restricted_unpacker<StyleObject> (arg...);
     }
     Image ();
@@ -285,7 +285,7 @@ class Picture : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Picture (T... arg) {
+    explicit Picture (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Picture ();
@@ -298,7 +298,7 @@ class Source : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Source (T... arg) {
+    explicit Source (const T... arg) {
         restricted_unpacker<StyleObject> (arg...);
     }
     Source ();
@@ -318,7 +318,7 @@ class Quote : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Quote (T... arg) {
+    explicit Quote (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Quote ();
@@ -331,7 +331,7 @@ class Label : public Block, public BodyObject
 {
 public:
     template<class... T>
-    explicit Label (T... arg) {
+    explicit Label (const T... arg) {
         restricted_unpacker<BodyObject> (arg...);
     }
     Label ();
