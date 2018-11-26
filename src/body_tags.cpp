@@ -1,4 +1,6 @@
 #include "header/body_tags.hpp"
+#include "header/output.hpp"
+
 
 namespace WCP
 {
@@ -8,11 +10,11 @@ Body::Body(const char* text) {
 }
 void Body::outputOpening() const
 {
-    std::cout << "<body" << attributes << ">";
+    wcpout << "<body" << attributes << ">";
 }
 void Body::outputClosing() const
 {
-    std::cout << "</body>";
+    wcpout << "</body>";
 }
 
 H1::H1() {}
@@ -21,11 +23,11 @@ H1::H1(const char* text) {
 }
 void H1::outputOpening() const
 {
-    std::cout << "<h1" << attributes << ">";
+    wcpout << "<h1" << attributes << ">";
 }
 void H1::outputClosing() const
 {
-    std::cout << "</h1>";
+    wcpout << "</h1>";
 }
 
 H2::H2() {}
@@ -34,11 +36,11 @@ H2::H2(const char* text) {
 }
 void H2::outputOpening() const
 {
-    std::cout << "<h2" << attributes << ">";
+    wcpout << "<h2" << attributes << ">";
 }
 void H2::outputClosing() const
 {
-    std::cout << "</h2>";
+    wcpout << "</h2>";
 }
 
 H3::H3() {}
@@ -47,11 +49,11 @@ H3::H3(const char* text) {
 }
 void H3::outputOpening() const
 {
-    std::cout << "<h3" << attributes << ">";
+    wcpout << "<h3" << attributes << ">";
 }
 void H3::outputClosing() const
 {
-    std::cout << "</h3>";
+    wcpout << "</h3>";
 }
 
 H4::H4() {}
@@ -60,11 +62,11 @@ H4::H4(const char* text) {
 }
 void H4::outputOpening() const
 {
-    std::cout << "<h4" << attributes << ">";
+    wcpout << "<h4" << attributes << ">";
 }
 void H4::outputClosing() const
 {
-    std::cout << "</h4>";
+    wcpout << "</h4>";
 }
 
 H5::H5() {}
@@ -73,11 +75,11 @@ H5::H5(const char* text) {
 }
 void H5::outputOpening() const
 {
-    std::cout << "<h5" << attributes << ">";
+    wcpout << "<h5" << attributes << ">";
 }
 void H5::outputClosing() const
 {
-    std::cout << "</h5>";
+    wcpout << "</h5>";
 }
 
 H6::H6() {}
@@ -86,17 +88,17 @@ H6::H6(const char* text) {
 }
 void H6::outputOpening() const
 {
-    std::cout << "<h6" << attributes << ">";
+    wcpout << "<h6" << attributes << ">";
 }
 void H6::outputClosing() const
 {
-    std::cout << "</h6>";
+    wcpout << "</h6>";
 }
 
 LineBreak::LineBreak() {}
 void LineBreak::outputOpening() const
 {
-    std::cout << "<br>";
+    wcpout << "<br>";
 }
 void LineBreak::outputClosing() const {}
 LineBreak Break{};
@@ -106,10 +108,10 @@ Centered::Centered(const char* text) {
     unpacker (Text(std::string (text)));
 }
 void Centered::outputOpening() const {
-    std::cout << "<center" << attributes << ">";
+    wcpout << "<center" << attributes << ">";
 }
 void Centered::outputClosing() const {
-    std::cout << "</center>";
+    wcpout << "</center>";
 }
 
 Table::Table() {}
@@ -117,10 +119,10 @@ Table::Table(const char* text) {
     unpacker (Text(std::string (text)));
 }
 void Table::outputOpening() const {
-    std::cout << "<table" << attributes << ">";
+    wcpout << "<table" << attributes << ">";
 }
 void Table::outputClosing() const {
-    std::cout << "</table>";
+    wcpout << "</table>";
 }
 
 Row::Row() {}
@@ -128,10 +130,10 @@ Row::Row(const char* text) {
     unpacker (Text(std::string (text)));
 }
 void Row::outputOpening() const {
-    std::cout << "<tr" << attributes << ">";
+    wcpout << "<tr" << attributes << ">";
 }
 void Row::outputClosing() const {
-    std::cout << "</tr>";
+    wcpout << "</tr>";
 }
 
 Cell::Cell() {}
@@ -139,10 +141,10 @@ Cell::Cell(const char* text) {
     unpacker (Text(std::string (text)));
 }
 void Cell::outputOpening() const {
-    std::cout << "<td" << attributes << ">";
+    wcpout << "<td" << attributes << ">";
 }
 void Cell::outputClosing() const {
-    std::cout << "</td>";
+    wcpout << "</td>";
 }
 
 HighlightedCell::HighlightedCell() {}
@@ -150,10 +152,10 @@ HighlightedCell::HighlightedCell(const char* text) {
     unpacker (Text(std::string (text)));
 }
 void HighlightedCell::outputOpening() const {
-    std::cout << "<th" << attributes << ">";
+    wcpout << "<th" << attributes << ">";
 }
 void HighlightedCell::outputClosing() const {
-    std::cout << "</th>";
+    wcpout << "</th>";
 }
 
 Container::Container() {}
@@ -161,10 +163,10 @@ Container::Container(const char* text) {
     unpacker (Text(std::string (text)));
 }
 void Container::outputOpening() const {
-    std::cout << "<div" << attributes << ">";
+    wcpout << "<div" << attributes << ">";
 }
 void Container::outputClosing() const {
-    std::cout << "</div>";
+    wcpout << "</div>";
 }
 
 NavBar::NavBar() {}
@@ -172,42 +174,42 @@ NavBar::NavBar(const char* text) {
     unpacker (Text(std::string (text)));
 }
 void NavBar::outputOpening() const {
-    std::cout << "<nav" << attributes << ">";
+    wcpout << "<nav" << attributes << ">";
 }
 void NavBar::outputClosing() const {
-    std::cout << "</nav>";
+    wcpout << "</nav>";
 }
 
 HyperLink::HyperLink() {}
 HyperLink::HyperLink(const char* text) : HyperLink (Text (text)) {}
 void HyperLink::outputOpening() const {
-    std::cout << "<a" << attributes << ">";
+    wcpout << "<a" << attributes << ">";
 }
 void HyperLink::outputClosing() const {
-    std::cout << "</a>";
+    wcpout << "</a>";
 }
 
 Marked::Marked() {}
 Marked::Marked(const char* text) : Marked (Text (text)) {}
 void Marked::outputOpening() const {
-    std::cout << "<mark" << attributes << ">";
+    wcpout << "<mark" << attributes << ">";
 }
 void Marked::outputClosing() const {
-    std::cout << "</mark>";
+    wcpout << "</mark>";
 }
 
 Form::Form() {}
 Form::Form(const char* text) : Form (Text (text)) {}
 void Form::outputOpening() const {
-    std::cout << "<form" << attributes << ">";
+    wcpout << "<form" << attributes << ">";
 }
 void Form::outputClosing() const {
-    std::cout << "</form>";
+    wcpout << "</form>";
 }
 
 Input::Input() {}
 void Input::outputOpening() const {
-    std::cout << "<input" << attributes << ">";
+    wcpout << "<input" << attributes << ">";
 }
 void Input::outputClosing() const {
 }
@@ -215,37 +217,37 @@ void Input::outputClosing() const {
 Paragraph::Paragraph() {}
 Paragraph::Paragraph(const char* text) : Paragraph (Text (text)) {}
 void Paragraph::outputOpening() const {
-    std::cout << "<p" << attributes << ">";
+    wcpout << "<p" << attributes << ">";
 }
 void Paragraph::outputClosing() const {
-    std::cout << "</p>";
+    wcpout << "</p>";
 }
 
 Image::Image() {}
 void Image::outputOpening() const {
-    std::cout << "<img" << attributes << ">";
+    wcpout << "<img" << attributes << ">";
 }
 void Image::outputClosing() const {
 }
 
 Picture::Picture() {}
 void Picture::outputOpening() const {
-    std::cout << "<picture" << attributes << ">";
+    wcpout << "<picture" << attributes << ">";
 }
 void Picture::outputClosing() const {
-    std::cout << "</picture>";
+    wcpout << "</picture>";
 }
 
 Source::Source() {}
 void Source::outputOpening() const {
-    std::cout << "<source" << attributes << ">";
+    wcpout << "<source" << attributes << ">";
 }
 void Source::outputClosing() const {
 }
 
 HorizontalLine::HorizontalLine() {}
 void HorizontalLine::outputOpening() const {
-    std::cout << "<hr>";
+    wcpout << "<hr>";
 }
 void HorizontalLine::outputClosing() const {
 }
@@ -253,19 +255,19 @@ void HorizontalLine::outputClosing() const {
 Quote::Quote() {}
 Quote::Quote(const char* text) : Quote (Text (text)) {}
 void Quote::outputOpening() const {
-    std::cout << "<blockquote" << attributes << ">";
+    wcpout << "<blockquote" << attributes << ">";
 }
 void Quote::outputClosing() const {
-    std::cout << "</blockquote>";
+    wcpout << "</blockquote>";
 }
 
 Label::Label() {}
 Label::Label(const char* text) : Label (Text (text)) {}
 void Label::outputOpening() const {
-    std::cout << "<label" << attributes << ">";
+    wcpout << "<label" << attributes << ">";
 }
 void Label::outputClosing() const {
-    std::cout << "</label>";
+    wcpout << "</label>";
 }
 
 } // namespace WCP

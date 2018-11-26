@@ -1,4 +1,5 @@
 #include "header/attributes.hpp"
+#include "header/output.hpp"
 #include <regex>
 
 namespace WCP
@@ -10,7 +11,7 @@ Attribute::Attribute(const std::string &cn) : name(cn)
 }
 void Attribute::printAttribute()
 {
-    std::cout << name;
+    wcpout << name;
 }
 
 ClassAttribute::ClassAttribute() {}
@@ -22,7 +23,7 @@ ClassAttribute::ClassAttribute(const std::string &cn) : name(cn)
 }
 void ClassAttribute::printAttribute()
 {
-    std::cout << "class=\"" << name << "\"";
+    wcpout << "class=\"" << name << "\"";
 }
 
 IdAttribute::IdAttribute() {}
@@ -34,7 +35,7 @@ IdAttribute::IdAttribute(const std::string &cn) : name(cn)
 }
 void IdAttribute::printAttribute()
 {
-    std::cout << "id=\"" << name << "\"";
+    wcpout << "id=\"" << name << "\"";
 }
 
 StyleAttribute::StyleAttribute() {}
@@ -46,7 +47,7 @@ StyleAttribute::StyleAttribute(const std::string &cn) : name(cn)
 }
 void StyleAttribute::printAttribute()
 {
-    std::cout << "style=\"" << name << "\"";
+    wcpout << "style=\"" << name << "\"";
 }
 
 HyperReference::HyperReference() {}
@@ -58,7 +59,7 @@ HyperReference::HyperReference(const std::string &cn) : name(cn)
 }
 void HyperReference::printAttribute()
 {
-    std::cout << "href=\"" << name << "\"";
+    wcpout << "href=\"" << name << "\"";
 }
 
 FormMethod::FormMethod() {}
@@ -70,7 +71,7 @@ FormMethod::FormMethod(const std::string &cn) : method(cn)
 }
 void FormMethod::printAttribute()
 {
-    std::cout << "method=\"" << method << "\"";
+    wcpout << "method=\"" << method << "\"";
 }
 
 InputType::InputType() {}
@@ -82,7 +83,7 @@ InputType::InputType(const std::string &cn) : type(cn)
 }
 void InputType::printAttribute()
 {
-    std::cout << "type=\"" << type << "\"";
+    wcpout << "type=\"" << type << "\"";
 }
 
 InputName::InputName() {}
@@ -94,7 +95,7 @@ InputName::InputName(const std::string &cn) : name(cn)
 }
 void InputName::printAttribute()
 {
-    std::cout << "name=\"" << name << "\"";
+    wcpout << "name=\"" << name << "\"";
 }
 
 InputValue::InputValue() {}
@@ -106,7 +107,7 @@ InputValue::InputValue(const std::string &cn) : name(cn)
 }
 void InputValue::printAttribute()
 {
-    std::cout << "value=\"" << name << "\"";
+    wcpout << "value=\"" << name << "\"";
 }
 
 SourceAttribute::SourceAttribute() {}
@@ -118,6 +119,6 @@ SourceAttribute::SourceAttribute(const std::string &cn) : name(cn)
 }
 void SourceAttribute::printAttribute()
 {
-    std::cout << "src=\"" << name << "\"";
+    wcpout << "src=\"" << name << "\"";
 }
 } // namespace WCP
