@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include "output.hpp"
 
 namespace WCP
 {
@@ -79,8 +80,5 @@ public:
 };
 } // namespace WCP
 
-
-std::ostream &operator<<(std::ostream &os, const WCP::Block &);
-std::ostream &operator<<(std::ostream &os, const std::vector<std::shared_ptr<WCP::NamedAttribute>> &);
 
 #endif

@@ -1,4 +1,5 @@
 #include "header/util.hpp"
+#include "header/output.hpp"
 #include <algorithm>
 #include <regex>
 
@@ -12,7 +13,7 @@ Text::Text (const std::string &arg) : containedText(arg)
 Text::Text (const char *arg) : Text(std::string(arg)) {}
 Text::Text(){}
 void Text::outputOpening() const {
-    std::cout << containedText;
+    wcpout << containedText;
 }
 void Text::outputClosing() const {}
 
@@ -22,7 +23,7 @@ UnformattedText::UnformattedText (const std::string &arg) : containedText(arg)
 UnformattedText::UnformattedText (const char *arg) : UnformattedText(std::string(arg)) {}
 UnformattedText::UnformattedText(){}
 void UnformattedText::outputOpening() const {
-    std::cout << containedText;
+    wcpout << containedText;
 }
 void UnformattedText::outputClosing() const {}
 
@@ -37,7 +38,7 @@ ConvenientText::ConvenientText (const std::string &arg) : containedText(arg)
 ConvenientText::ConvenientText (const char *arg) : ConvenientText(std::string(arg)) {}
 ConvenientText::ConvenientText(){}
 void ConvenientText::outputOpening() const {
-    std::cout << containedText;
+    wcpout << containedText;
 }
 void ConvenientText::outputClosing() const {}
 }

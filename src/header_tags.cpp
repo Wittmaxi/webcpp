@@ -1,14 +1,16 @@
 #include "header/basic_tags.hpp"
+#include "header/output.hpp"
+
 
 namespace WCP
 {
 void Head::outputOpening() const
 {
-    std::cout << "<head> ";
+    wcpout << "<head> ";
 }
 void Head::outputClosing() const
 {
-    std::cout << "</head>";
+    wcpout << "</head>";
 }
 
 Title::Title() {}
@@ -18,11 +20,11 @@ Title::Title(WCP::Text arg)
 }
 void Title::outputOpening() const
 {
-    std::cout << "<title>";
+    wcpout << "<title>";
 }
 void Title::outputClosing() const
 {
-    std::cout << "</title>";
+    wcpout << "</title>";
 }
 
 Include::Include(const std::string &href_, const std::string &type_, const std::string &rel_) :  type (type_), href(href_), rel (rel_) 
@@ -31,7 +33,7 @@ Include::Include(const std::string &href_, const std::string &type_, const std::
 Include::Include() {}
 void Include::outputOpening() const
 {
-    std::cout << "<link rel='" + rel + "' type='" + type + "' href='" + href + "'>";
+    wcpout << "<link rel='" + rel + "' type='" + type + "' href='" + href + "'>";
 }
 void Include::outputClosing() const {}
 
@@ -41,10 +43,10 @@ IncludeScript::IncludeScript(const std::string &href_) : href(href_)
 IncludeScript::IncludeScript() {}
 void IncludeScript::outputOpening() const
 {
-    std::cout << "<script src='" + href + "'>";
+    wcpout << "<script src='" + href + "'>";
 }
 void IncludeScript::outputClosing() const {
-    std::cout << "</script>";
+    wcpout << "</script>";
 }
 
 
@@ -54,7 +56,7 @@ HttpEquiv::HttpEquiv(const std::string &equiv_, const std::string &content_) : e
 }
 void HttpEquiv::outputOpening() const
 {
-    std::cout << "<meta http-equiv='" + equiv + "' content='" + content + "'>";
+    wcpout << "<meta http-equiv='" + equiv + "' content='" + content + "'>";
 }
 void HttpEquiv::outputClosing() const {}
 
@@ -64,7 +66,7 @@ Charset::Charset(const std::string &charset_) : charset (charset_)
 }
 void Charset::outputOpening() const
 {
-    std::cout << "<meta charset='" + charset + "'> ";
+    wcpout << "<meta charset='" + charset + "'> ";
 }
 void Charset::outputClosing() const {}
 
@@ -74,7 +76,7 @@ Meta::Meta(const std::string &name_, const std::string &content_) : name (name_)
 }
 void Meta::outputOpening() const
 {
-    std::cout << "<meta name='" + name + "' content='" + content + "'>";
+    wcpout << "<meta name='" + name + "' content='" + content + "'>";
 }
 void Meta::outputClosing() const {}
 
