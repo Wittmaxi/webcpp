@@ -6,8 +6,7 @@
 namespace WCP
 {
 void Document::outputOpening() const
-{   
-    wcpout << "Content-type:text/html";
+{
     wcpout << "<!DOCTYPE HTML>\n";
     wcpout << "<html" << attributes << ">";
 }
