@@ -70,7 +70,7 @@ int main()
 {
 ENV::initializeENV();
 HTTPHeader myHeader;
-myHeader.addCookie("username", "maxi", false, "");
+myHeader.addCookie("username", "Klimi", false, "");
 
 Document myDocument{
 projectHeader,

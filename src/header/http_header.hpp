@@ -13,7 +13,8 @@ public:
     void print();
     std::ostream& operator<< (std::ostream& os);
 private:
-    std::string contentType = "";
+    std::string contentType = "Content-type:text/html";
+
     std::vector<std::string> flags;
 };
 }

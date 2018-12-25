@@ -18,9 +18,9 @@ void HTTPHeader::addFlag(const std::string &flag)
     flags.push_back(flag);
 }
 void HTTPHeader::print() {
-    wcpout << contentType << "\n";
     for (const auto &i : flags)
         wcpout << i << "\n";
+    wcpout << contentType;
     wcpout << "\r\n\r\n";
 }
 std::ostream &HTTPHeader::operator<<(std::ostream &os)
