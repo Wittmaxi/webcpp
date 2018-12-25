@@ -56,11 +56,12 @@ wcpout_t &operator<<(wcpout_t &os, const std::string &in)
 {
     switch (os.type)
     {
-    case outputType::STDOUT:
-        std::cout << in;
-        break;
     case outputType::FILE:
         os.outputFile << in;
+        break;
+    case outputType::STDOUT:
+    default:
+        std::cout << in;
         break;
     }
     return os;
