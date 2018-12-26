@@ -28,7 +28,7 @@ It consists of
 2) A set of tools that simplify the interaction with the user <br>
 
 ## Usage
-In order to understand this quick walkthrough, you should read https://www.tutorialspoint.com/cplusplus/cpp_web_programming.htm first!
+In order to understand this quick walkthrough, you should read [this] (https://www.tutorialspoint.com/cplusplus/cpp_web_programming.htm) first!
 ### Functionality
 The template engine works by having blocks that accept an infinite amount of other Blocks as constructor elements. <br>
 
