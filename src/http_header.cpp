@@ -4,6 +4,10 @@
 
 namespace WCP
 {
+HTTPHeader::~HTTPHeader() {
+    if (!printed)
+        print();
+}
 void HTTPHeader::setContentType(const std::string &ct)
 {
     contentType = ct;
@@ -17,15 +21,12 @@ void HTTPHeader::addFlag(const std::string &flag)
 {
     flags.push_back(flag);
 }
-void HTTPHeader::print() {
+void HTTPHeader::print() const {
+    bool printed = true;
     for (const auto &i : flags)
         wcpout << i << "\n";
     wcpout << contentType;
     wcpout << "\r\n\r\n";
 }
-std::ostream &HTTPHeader::operator<<(std::ostream &os)
-{
-    print();
-    return os;
-}
+
 } // namespace WCP

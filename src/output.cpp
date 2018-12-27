@@ -43,6 +43,11 @@ std::ostream &operator<<(std::ostream &os, const Block &other)
     other.outputClosing();
     return os;
 }
+std::ostream &operator<<(std::ostream &os, const HTTPHeader& h)
+{
+    h.print();
+    return os;
+}
 
 wcpout_t &operator<<(wcpout_t &os, NamedAttribute &a)
 {
