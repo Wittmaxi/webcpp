@@ -29,6 +29,15 @@ It consists of
 
 ## Usage
 In order to understand this quick walkthrough, you should read [this](https://www.tutorialspoint.com/cplusplus/cpp_web_programming.htm) first!
+
+### Output Stream
+The entire set of tools outputs it's response to the global variable WCP::wcpout. Wcpout has the following functions to retrieve the content. If none of them is called, the destructor will automatically output the entire content to the standard-output. 
+```c++
+void outputToFile(const std::string &fileName);
+void outputToSTDOUT();
+std::string getString();
+```
+
 ### Functionality
 The template engine works by having blocks that accept an infinite amount of other Blocks as constructor elements. <br>
 
