@@ -9,18 +9,15 @@
 #include <fstream>
 
 namespace WCP {
-enum class outputType {
-    STDOUT,
-    SOCKET,
-    FILE
-};
 
 struct wcpout_t {
-    outputType type = outputType::STDOUT;
-    std::fstream outputFile;
+    bool outputted;
+    std::string stored; 
 
     void outputToFile(const std::string &fileName);
     void outputToSTDOUT();
+    std::string getString();
+    ~wcpout_t();
 };
 
 extern wcpout_t wcpout;

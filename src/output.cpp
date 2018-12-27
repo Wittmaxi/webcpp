@@ -7,15 +7,23 @@ wcpout_t wcpout;
 
 void wcpout_t::outputToFile(const std::string &fileName)
 {
-    type = outputType::FILE;
-    outputFile = std::fstream (fileName);
-    if (!outputFile.good()) {
-        std::cerr << "Cannot open file " << fileName << "\n";
-    }
+    std::fstream outputFile(fileName);
+    outputFile << stored;
+    outputted = true;
 }
 void wcpout_t::outputToSTDOUT()
 {
-    type = outputType::STDOUT;
+    std::cout << stored;
+    outputted = true;
+}
+std::string wcpout_t::getString()
+{
+    outputted = true;
+    return stored;
+}
+wcpout_t::~wcpout_t () {
+    if (!outputted)
+        std::cout << stored;
 }
 
 wcpout_t &operator<<(wcpout_t &os, const Block &other)
@@ -40,12 +48,13 @@ wcpout_t &operator<<(wcpout_t &os, NamedAttribute &a)
 {
     wcpout << " ";
     a.printAttribute();
-    return os; 
+    return os;
 }
 
 wcpout_t &operator<<(wcpout_t &os, const std::vector<std::shared_ptr<NamedAttribute>> &other)
 {
-    for (const auto i : other) {
+    for (const auto i : other)
+    {
         wcpout << " ";
         (*i).printAttribute();
     }
@@ -54,16 +63,7 @@ wcpout_t &operator<<(wcpout_t &os, const std::vector<std::shared_ptr<NamedAttrib
 
 wcpout_t &operator<<(wcpout_t &os, const std::string &in)
 {
-    switch (os.type)
-    {
-    case outputType::FILE:
-        os.outputFile << in;
-        break;
-    case outputType::STDOUT:
-    default:
-        std::cout << in;
-        break;
-    }
+    os.stored += in;
     return os;
 }
 
