@@ -4,10 +4,6 @@
 
 namespace WCP
 {
-HTTPHeader::~HTTPHeader() {
-    if (!printed)
-        print();
-}
 void HTTPHeader::setContentType(const std::string &ct)
 {
     contentType = ct;

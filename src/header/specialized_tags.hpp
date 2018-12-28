@@ -5,7 +5,7 @@
 #include <functional>
 
 namespace WCP {
-class Function : public Block, public DocumentObject
+class Function : public Block, public DocumentObject, public TableObject
 {
 public: 
     Function ();
