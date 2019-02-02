@@ -41,9 +41,9 @@ void initializeCookies ();
 
 void initializeENV ();
 
-std::string GET (std::string name);
-std::string POST (std::string name);
-std::string COOKIE (std::string name);
+std::string GET (const std::string &name);
+std::string POST (const std::string &name);
+std::string COOKIE (const std::string &name);
 
 }
 } // namespace WCP

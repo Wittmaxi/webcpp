@@ -110,13 +110,13 @@ void initializeENV () {
     UTIL::initializeCookies();
 }
 
-std::string GET (std::string name) {
+std::string GET (const std::string &name) {
     return UTIL::removeBrowserEscapes(UTIL::GET_MAP [name]);
 }
-std::string POST (std::string name) {
+std::string POST (const std::string& name) {
     return UTIL::removeBrowserEscapes(UTIL::POST_MAP [name]);
 }
-std::string COOKIE (std::string name) {
+std::string COOKIE (const std::string& name) {
     return UTIL::COOKIE_MAP[name];
 }
 }
