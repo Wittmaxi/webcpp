@@ -9,7 +9,31 @@ namespace UTIL {
 std::string to_print;
 std::map <std::string, std::string> GET_MAP;
 std::map <std::string, std::string> POST_MAP;
+std::map <std::string, FILE> POST_FILES_MAP;
 std::map <std::string, std::string> COOKIE_MAP;
+bool enctype_form_data = false;
+
+std::string removeUntil (std::string toProcess, std::string until) {
+    auto it = toProcess.find(until);
+    if (it == std::string::npos) 
+        return "";
+    return std::string (toProcess.begin() + ++it + until.size(), toProcess.end());
+}
+
+std::string getUntil (std::string toProcess, std::string until) {
+    auto it = toProcess.find(until);
+    if (it == std::string::npos) 
+        return toProcess;
+    return std::string (toProcess.begin(), toProcess.begin() + --it);
+}
+
+std::string getUntilBefore (std::string toProcess, std::string until) {
+    auto it = toProcess.find(until);
+    if (it == std::string::npos) 
+        return toProcess;
+    return std::string (toProcess.begin(), toProcess.begin() + --(--it));
+}
+
 
 std::string removeUntil (std::string toProcess, char until) {
     auto it = std::find(toProcess.begin(), toProcess.end(), until);
@@ -22,6 +46,14 @@ std::string getUntil (std::string toProcess, char until) {
     auto it = std::find(toProcess.begin(), toProcess.end(), until);
     return std::string (toProcess.begin(), it);
 }
+
+std::string getUntilBefore (std::string toProcess, char until) {
+    std::string temp;
+    temp = getUntil (toProcess, until);
+    temp = temp.substr(0, temp.size() - 1);
+    return temp;
+}
+
 
 std::string removeBrowserEscapes (std::string text) {
     std::string temp_string;
@@ -46,25 +78,15 @@ std::string extractAndRemoveGetKeyValueFromString (std::string temporary, std::m
     temporary = UTIL::removeUntil (temporary, '=');
     std::string value = UTIL::getUntil (temporary, termination);
     mapToUse [key] = value;
-    return temporary;
-} 
+    return UTIL::removeUntil(temporary, termination);
+}
 
 std::string getPostData () {
-    char *len_ = getenv("CONTENT_LENGTH");
-    if (len_ == nullptr) 
-        return "";
-    long len = strtol(len_, nullptr, 10);
-    if (len == 0)
-        return "";
-    char *postdata = static_cast <char*> (malloc(len + 1));
-    if (!postdata) {
-        std::cerr << "WEBCPP and it's HTTP accessor must be run in a webserver-context!";
-        return "";
-    }
-    fgets(postdata, len + 1, stdin);
-    std::string temp (postdata);
-    free(postdata);
-    return temp;
+    std::string postData;
+    std::string temp;
+    while (std::getline(std::cin, temp).good())
+        postData += temp + "\n"; 
+    return postData;
 }
 
 void initializeGet () {
@@ -79,14 +101,58 @@ void initializeGet () {
     }
 }
 
+void parseMIMEPage(std::string input) {
+    if (input == "") 
+        return;
+    std::string header = UTIL::removeUntil(input, '\n');
+    header = UTIL::getUntilBefore(header, '\n');
+    header = std::regex_replace(header, std::regex(" "), "");
+    std::map<std::string, std::string> tempMap;
+    header = UTIL::removeUntil(header, ';');
+    while (header != "") {
+        header = extractAndRemoveGetKeyValueFromString (header, tempMap, ';');
+    }
+    input = UTIL::removeUntil(input, '\n');
+    input = UTIL::removeUntil(input, '\n');
+    std::string contentType = UTIL::getUntil(input, '\n');
+    input = UTIL::removeUntil(input, '\n');
+    if (std::regex_search(contentType, std::regex("Content-Type:"))) {
+        FILE tempFile; 
+        tempFile.datatype = std::regex_replace(contentType, std::regex("Content-Type:"), "");
+        tempFile.content = input;
+        tempFile.filename = std::regex_replace(tempMap["filename"], std::regex("\""), "");
+        POST_FILES_MAP[std::regex_replace(tempMap["name"], std::regex("\""), "")] = tempFile;
+    } else {
+        POST_MAP[std::regex_replace(tempMap["name"], std::regex("\""), "")] = UTIL::getUntil(input, '\n');
+    }
+}
+
+void parsePOSTPage(std::string input) {
+    if (input == "") 
+        return;
+    while (UTIL::getUntil(input, '=') != "") {
+        input = extractAndRemoveGetKeyValueFromString (input, POST_MAP);
+        input = UTIL::removeUntil(input, '&');
+    }
+}
 
 void initializePost () {
-    std::string temporary = std::string (getPostData());
-    if (temporary == "") 
+    if (getenv ("CONTENT_TYPE") == nullptr) {
+        std::cerr << "WEBCPP and it's HTTP accessor must be run in a webserver-context!";
         return;
-    while (UTIL::getUntil(temporary, '=') != "") {
-        temporary = extractAndRemoveGetKeyValueFromString (temporary, POST_MAP);
-        temporary = UTIL::removeUntil(temporary, '&');
+    }
+    std::string content = getPostData();
+    std::string contentType = getenv("CONTENT_TYPE");
+    if (std::regex_search(contentType, std::regex("multipart/form-data"))) {
+        std::string boundary = std::regex_replace(contentType, std::regex("(.)+(boundary=)"), "");
+        content = removeUntil(content, boundary);
+        while (content != "") {
+            parseMIMEPage(getUntilBefore(content, boundary));
+            content = removeUntil(content, boundary);
+        }
+    } 
+    else {
+        parsePOSTPage(content);
     }
 }
 
@@ -103,7 +169,6 @@ void initializeCookies () {
 }
 }
 
-
 void initializeENV () {
     UTIL::initializeGet();
     UTIL::initializePost();
@@ -115,6 +180,9 @@ std::string GET (const std::string &name) {
 }
 std::string POST (const std::string& name) {
     return UTIL::removeBrowserEscapes(UTIL::POST_MAP [name]);
+}
+FILE POSTFILE (const std::string& name) {
+    return UTIL::POST_FILES_MAP[name];
 }
 std::string COOKIE (const std::string& name) {
     return UTIL::COOKIE_MAP[name];

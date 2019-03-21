@@ -23,15 +23,23 @@ namespace ENV
 //    "SERVER_SIGNATURE","SERVER_SOFTWARE"  
 // source : https://www.tutorialspoint.com/cplusplus/cpp_web_programming.htm
 
+struct FILE {
+    std::string filename;
+    std::string datatype;
+    std::string content;
+};
+
 namespace UTIL {
-extern std::string to_print;
 extern std::map <std::string, std::string> GET_MAP;
 extern std::map <std::string, std::string> POST_MAP;
+extern std::map <std::string, FILE> POST_FILES_MAP;
 extern std::map <std::string, std::string> COOKIE_MAP;
 
 std::string removeBrowserEscapes (std::string text);
 std::string removeUntil (std::string toProcess, char until);
 std::string getUntil (std::string toProcess, char until);
+std::string removeUntil (std::string toProcess, std::string until);
+std::string getUntil (std::string toProcess, std::string until);
 std::string getPostData ();
 std::string extractAndRemoveGetKeyValueFromString (std::string temporary);
 void initializeGet();
@@ -39,10 +47,12 @@ void initializePost();
 void initializeCookies ();
 }
 
+
 void initializeENV ();
 
 std::string GET (const std::string &name);
 std::string POST (const std::string &name);
+FILE POSTFILE (const std::string &name);
 std::string COOKIE (const std::string &name);
 
 }
