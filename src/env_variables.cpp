@@ -145,13 +145,10 @@ void parseMIMEPage(std::string input) {
 }
 
 void parsePOSTPage(std::string input) {
-        std::cout << "input: " << input << "<br>";
     if (input == "") 
         return;
-    while (input != "") {
+    while (input != "")
         input = extractAndRemoveGetKeyValueFromString (input, POST_MAP);
-        std::cout << "input: " << input << "<br>";
-    }
 }
 
 void initializePost () {
@@ -160,7 +157,6 @@ void initializePost () {
         return;
     }
     std::string contentType = getenv("CONTENT_TYPE");
-    std::cout << "Content-Type: text/html\r\n\r\n";
     if (std::regex_search(contentType, std::regex("multipart\\/form-data"))) {
         std::string content = getPostData();
         std::cout << "in";
@@ -183,10 +179,8 @@ void initializeCookies () {
         return;
     }
     std::string temporary = std::string(getenv ("HTTP_COOKIE"));
-    while (UTIL::getUntil(temporary, '=') != "") {
+    while (temporary != "")
         temporary = extractAndRemoveGetKeyValueFromString (temporary, COOKIE_MAP, ';');
-        temporary = UTIL::removeUntil(temporary, ';');
-    }
 }
 }
 
