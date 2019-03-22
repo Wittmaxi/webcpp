@@ -13,21 +13,21 @@ std::map <std::string, FILE> POST_FILES_MAP;
 std::map <std::string, std::string> COOKIE_MAP;
 bool enctype_form_data = false;
 
-std::string removeUntil (std::string toProcess, std::string until) {
+std::string removeUntil (const std::string& toProcess, const std::string& until) {
     auto it = toProcess.find(until);
     if (it == std::string::npos) 
         return "";
     return std::string (toProcess.begin() + ++it + until.size(), toProcess.end());
 }
 
-std::string getUntil (std::string toProcess, std::string until) {
+std::string getUntil (const std::string& toProcess, const std::string& until) {
     auto it = toProcess.find(until);
     if (it == std::string::npos) 
         return toProcess;
     return std::string (toProcess.begin(), toProcess.begin() + --it);
 }
 
-std::string getUntilBefore (std::string toProcess, std::string until) {
+std::string getUntilBefore (const std::string& toProcess, const std::string& until) {
     auto it = toProcess.find(until);
     if (it == std::string::npos) 
         return toProcess;
@@ -89,16 +89,33 @@ std::string getPostData () {
     return postData;
 }
 
+std::string getPostHeader () {
+    char *len_ = getenv("CONTENT_LENGTH");
+    if (len_ == nullptr) 
+        return "";
+    long len = strtol(len_, nullptr, 10);
+    if (len == 0)
+        return "";
+    char *postdata = static_cast <char*> (malloc(len + 1));
+    if (!postdata) {
+        std::cerr << "WEBCPP and it's HTTP accessor must be run in a webserver-context!";
+        return "";
+    }
+    fgets(postdata, len + 1, stdin);
+    std::string temp (postdata);
+    free(postdata);
+    return temp;
+}
+
+
 void initializeGet () {
     if (getenv ("QUERY_STRING") == nullptr) {
         std::cerr << "WEBCPP and it's HTTP accessor must be run in a webserver-context!";
         return;
     }
     std::string temporary = std::string(getenv ("QUERY_STRING"));
-    while (UTIL::getUntil(temporary, '=') != "") {
+    while (temporary != "")
         temporary = extractAndRemoveGetKeyValueFromString (temporary, GET_MAP);
-        temporary = UTIL::removeUntil(temporary, '&');
-    }
 }
 
 void parseMIMEPage(std::string input) {
@@ -128,11 +145,12 @@ void parseMIMEPage(std::string input) {
 }
 
 void parsePOSTPage(std::string input) {
+        std::cout << "input: " << input << "<br>";
     if (input == "") 
         return;
-    while (UTIL::getUntil(input, '=') != "") {
+    while (input != "") {
         input = extractAndRemoveGetKeyValueFromString (input, POST_MAP);
-        input = UTIL::removeUntil(input, '&');
+        std::cout << "input: " << input << "<br>";
     }
 }
 
@@ -141,9 +159,11 @@ void initializePost () {
         std::cerr << "WEBCPP and it's HTTP accessor must be run in a webserver-context!";
         return;
     }
-    std::string content = getPostData();
     std::string contentType = getenv("CONTENT_TYPE");
-    if (std::regex_search(contentType, std::regex("multipart/form-data"))) {
+    std::cout << "Content-Type: text/html\r\n\r\n";
+    if (std::regex_search(contentType, std::regex("multipart\\/form-data"))) {
+        std::string content = getPostData();
+        std::cout << "in";
         std::string boundary = std::regex_replace(contentType, std::regex("(.)+(boundary=)"), "");
         content = removeUntil(content, boundary);
         while (content != "") {
@@ -152,6 +172,7 @@ void initializePost () {
         }
     } 
     else {
+        std::string content = getPostHeader();
         parsePOSTPage(content);
     }
 }
