@@ -134,13 +134,14 @@ void parseMIMEPage(std::string input) {
     std::string contentType = UTIL::getUntil(input, '\n');
     input = UTIL::removeUntil(input, '\n');
     if (std::regex_search(contentType, std::regex("Content-Type:"))) {
+        input = UTIL::removeUntil(input, '\n');
         FILE tempFile; 
         tempFile.datatype = std::regex_replace(contentType, std::regex("Content-Type:"), "");
         tempFile.content = input;
         tempFile.filename = std::regex_replace(tempMap["filename"], std::regex("\""), "");
         POST_FILES_MAP[std::regex_replace(tempMap["name"], std::regex("\""), "")] = tempFile;
     } else {
-        POST_MAP[std::regex_replace(tempMap["name"], std::regex("\""), "")] = UTIL::getUntil(input, '\n');
+        POST_MAP[std::regex_replace(tempMap["name"], std::regex("\""), "")] = UTIL::getUntilBefore(input, '\n');
     }
 }
 
@@ -159,7 +160,6 @@ void initializePost () {
     std::string contentType = getenv("CONTENT_TYPE");
     if (std::regex_search(contentType, std::regex("multipart\\/form-data"))) {
         std::string content = getPostData();
-        std::cout << "in";
         std::string boundary = std::regex_replace(contentType, std::regex("(.)+(boundary=)"), "");
         content = removeUntil(content, boundary);
         while (content != "") {
