@@ -298,11 +298,13 @@ Then, you can get both the arguments passed as POST and GET request with both
 Both functions return a UTF8-String that has already escaped the browser escape signals. 
 
 ```WCP::ENV::POSTFILE (std::string name)``` in multipart encoded post-requests, files that were sent can be retrieved by means of `POSTFILE`. It returns a struct File which looks like this:
-```struct FILE {
+```
+struct FILE {
     std::string filename;
     std::string datatype;
     std::string content;
-};```
+};
+```
 
 ```WCP::ENV::COOKIE (std::string name)``` 
 Returns the value of the cookie with name "name".
