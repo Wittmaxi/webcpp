@@ -38,6 +38,22 @@ void outputToSTDOUT();
 std::string getString();
 ```
 
+### wcpout
+In order to accomodate for the incoming implementation of FASTCGI, every output should be done by means of the `wcpout` object. It will only print its content once it is destroyed or once it is written to a file, to stdout or its string is retrieved (It won't print anything in the latter case). 
+
+### HTTP Header
+In order to tell the webserver what to do with your code output, you need an HTTP-Header. 
+This header is constituted by the class `WCP::HTTPHeader` Instantiate it and call it's print function before doing any other output!
+The HTTP Header also provides methods for setting cookies and other HTTP-Functionalities
+```void HTTPHeader::addCookie(const std::string &name, const std::string &value, const bool HTTPonly, const std::string &expiry)```
+This will set a cookie in the client's browser. 
+```void HTTPHeader::addFlag(const std::string &flag)```
+This function will add an unfiltered Line to the HTTP request. To use with care!
+
+Once you are done providing the HTTPHeader with this information, call 
+```wcpout << yourHTTPHeader;```
+to print it out!
+
 ### Functionality
 The template engine works by having blocks that accept an infinite amount of other Blocks as constructor elements. <br>
 
