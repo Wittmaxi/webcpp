@@ -37,9 +37,7 @@ void outputToFile(const std::string &fileName);
 void outputToSTDOUT();
 std::string getString();
 ```
-
-### wcpout
-In order to accomodate for the incoming implementation of FASTCGI, every output should be done by means of the `wcpout` object. It will only print its content once it is destroyed or once it is written to a file, to stdout or its string is retrieved (It won't print anything in the latter case). 
+Every output should be done through wcpout!
 
 ### HTTP Header
 In order to tell the webserver what to do with your code output, you need an HTTP-Header. 
